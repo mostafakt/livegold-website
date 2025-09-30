@@ -14,6 +14,15 @@
   "blog": "Blog",
 
   "footer": {
+    "headquarters": "Headquarters",
+    "contact-info": "Contact Information",
+
+    "work-hours": "Work Hours",
+    "work-hours-val": "Every day, without rest, we are dedicated to meeting our clients' needs.",
+
+    "location": "Jeddah, Saudi Arabia",
+    "phone": "Phone",
+    "support": "Support",
     "email": "Email",
     "subscribeText": "Subscribe to our newsletter to receive the latest market updates",
     "subscribeNow": "Subscribe Now",
@@ -315,6 +324,9 @@
   "partners": "Partners",
   "testimonials": "Testimonials",
   "faq": "FAQ",
+  "show-more": "Show More",
+  "show-less": "Show Less",
+  "public-blogs": "Public Blogs",
   "": "",
   "": ""
 }

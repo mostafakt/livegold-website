@@ -10,8 +10,8 @@ import { cairo } from "@/styles/fonts";
 import { notFound } from "next/navigation";
 import LocalizationWrapper from "@/components/LocalizationWrapper";
 export const metadata = {
-  title: "MyShop ",
-  description: "electronic devices",
+  title: "Live gold",
+  description: "Gold E-Commerce",
 };
 
 export default async function RootLayout({

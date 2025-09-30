@@ -23,8 +23,8 @@ export default function Footer({ logo, className }: FooterProps) {
       )}
     >
       <div>
-        <div className="flex flex-col lg:flex-row gap-28 items-start ">
-          <div className="flex flex-col max-w-2xl items-start">
+        <div className="flex flex-col lg:flex-row gap-28 justify-between items-start ">
+          <div className="flex flex-col max-w-lg  w-full items-start">
             <div className="flex flex-col w-full items-start lg:items-start gap-4 text-start text-zinc-300 text-sm lg:text-md  leading-relaxed">
               <Image
                 src="/images/footer/footer-logo.png"
@@ -51,59 +51,116 @@ export default function Footer({ logo, className }: FooterProps) {
               ></Input>
             </div>
           </div>
+          <div className=" flex flex-col items-start w-full lg:flex-row gap-6 ">
+            <div className="  w-full">
+              <h3 className="text-xl font-bold mb-4">{t("contact-info")}</h3>
 
-          {/* Column 1 — Important Links */}
-          <div className="text-start ">
-            <h3 className="text-xl font-bold mb-4">{t("importantLinks")}</h3>
-            <ul className="space-y-3">
-              <li>
-                <a href="/faq" className="hover:text-white">
-                  {t("faq")}
-                </a>
-              </li>
-              <li>
-                <a href="/privacy" className="hover:text-white">
-                  {t("privacy")}
-                </a>
-              </li>
-              <li>
-                <a href="/terms" className="hover:text-white">
-                  {t("terms")}
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="hover:text-white">
-                  {t("contact")}
-                </a>
-              </li>
-            </ul>
-          </div>
+              {/* Headquarters */}
+              <div className="flex items-start gap-4 mb-6">
+                <div>
+                  <h4 className="  text-white  mb-1">{t("headquarters")}</h4>
+                  <p className="text-white ">{t("location")}</p>
+                </div>
+              </div>
 
-          {/* Column 2 — Pages */}
-          <div className="text-start">
-            <h3 className="text-xl font-bold mb-4">{t("pages")}</h3>
-            <ul className="space-y-3">
-              <li>
-                <a href="/" className="hover:text-white">
-                  {t("home")}
-                </a>
-              </li>
-              <li>
-                <a href="/metals" className="hover:text-white">
-                  {t("metals")}
-                </a>
-              </li>
-              <li>
-                <a href="/maps" className="hover:text-white">
-                  {t("maps")}
-                </a>
-              </li>
-              <li>
-                <a href="/auctions" className="hover:text-white">
-                  {t("auctions")}
-                </a>
-              </li>
-            </ul>
+              {/* Phone */}
+              <div className="flex items-start gap-4 mb-6">
+                <div>
+                  <h4 className=" text-white  mb-1">{t("phone")}</h4>
+                  <div className="space-y-1">
+                    <a
+                      href={`tel:+966544766650`}
+                      className="block text-white  hover:text-primary-500 transition-colors"
+                    >
+                      966544766650+
+                    </a>
+                    <a
+                      href={`tel:+966546298555`}
+                      className="block text-white  hover:text-primary-500 transition-colors"
+                    >
+                      966546298555+
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-start gap-4 mb-8">
+                <div>
+                  <h4 className=" text-white  mb-1">{t("support")}</h4>
+                  <div className="space-y-1">
+                    <a
+                      href={`mailto:info@livegold.com`}
+                      className="block text-white  hover:text-primary-500 transition-colors"
+                    >
+                      info@livegold.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Column 1 — Important Links */}
+            <div className="text-start  w-full ">
+              <h3 className="text-xl font-bold mb-4">{t("importantLinks")}</h3>
+              <ul className="space-y-3">
+                <li>
+                  <a href="/faq" className="hover:text-white">
+                    {t("faq")}
+                  </a>
+                </li>
+                <li>
+                  <a href="/privacy" className="hover:text-white">
+                    {t("privacy")}
+                  </a>
+                </li>
+                <li>
+                  <a href="/terms" className="hover:text-white">
+                    {t("terms")}
+                  </a>
+                </li>
+                <li>
+                  <a href="/contact" className="hover:text-white">
+                    {t("contact")}
+                  </a>
+                </li>
+              </ul>
+            </div>
+            {/* Column 2 — Pages */}
+            <div className="text-start w-full">
+              <h3 className="text-xl font-bold mb-4">{t("pages")}</h3>
+              <ul className="space-y-3">
+                <li>
+                  <a href="/" className="hover:text-white">
+                    {t("home")}
+                  </a>
+                </li>
+                <li>
+                  <a href="/metals" className="hover:text-white">
+                    {t("metals")}
+                  </a>
+                </li>
+                <li>
+                  <a href="/maps" className="hover:text-white">
+                    {t("maps")}
+                  </a>
+                </li>
+                <li>
+                  <a href="/auctions" className="hover:text-white">
+                    {t("auctions")}
+                  </a>
+                </li>
+              </ul>
+            </div>{" "}
+            <div className="text-start w-full">
+              <h3 className="text-xl font-bold mb-4">{t("work-hours")}</h3>
+              <ul className="space-y-3">
+                <li>
+                  <a href="/" className="hover:text-white">
+                    {t("work-hours-val")}
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 

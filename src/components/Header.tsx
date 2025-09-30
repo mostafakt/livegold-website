@@ -72,7 +72,7 @@ export default function Header() {
       <header className="bg-bg-gradient text-base-content">
         {/* Top Section */}
 
-        <div className="flex flex-col w-full gap-3 px-3 lg:px-16 mt-2 ">
+        <div className="flex flex-col w-full gap-3 px-3 xl:px-16 mt-2 ">
           {/* Header Slides Section */}
           <div className="w-full ">
             <Swiper
@@ -116,7 +116,7 @@ export default function Header() {
                 />
               </Link>
               {/* Desktop Navigation */}
-              <div className="hidden lg:flex h-full gap-2">
+              <div className="hidden xl:flex h-full gap-2">
                 {pages.map((page) => {
                   const isActive =
                     page.href === "/"
@@ -140,7 +140,7 @@ export default function Header() {
               </div>
             </div>
             {/* Mobile Menu Button */}
-            <div className="lg:hidden   w-fit">
+            <div className="xl:hidden   w-fit">
               <button
                 onClick={() => setIsDrawerOpen(true)}
                 className="text-white p-2"
@@ -149,7 +149,7 @@ export default function Header() {
                 <MenuIcon className="h-7 w-7" />
               </button>
             </div>
-            <div className="hidden lg:flex">
+            <div className="hidden xl:flex">
               <HeaderActions primary />
             </div>
           </nav>
@@ -173,13 +173,13 @@ export default function Header() {
       {/* Overlay */}
       <div
         onClick={() => setIsDrawerOpen(false)}
-        className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity lg:hidden ${
+        className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity xl:hidden ${
           isDrawerOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       />
       {/* Drawer Panel */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-bg-nav z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed top-0 right-0 h-full w-64 bg-bg-nav z-50 transform transition-transform duration-300 ease-in-out xl:hidden ${
           isDrawerOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -223,24 +223,24 @@ export default function Header() {
 }
 const HeaderActions = ({}: { primary?: boolean }) => {
   return (
-    <div className="flex flex-col lg:flex-row gap-1 items-start">
-      <div className=" flex flex-col lg:flex-row gap-3 sm:w-auto items-start lg:items-center flex-wrap justify-center md:flex-nowrap">
+    <div className="flex flex-col xl:flex-row gap-1 items-start">
+      <div className=" flex flex-col xl:flex-row gap-3 sm:w-auto items-start xl:items-center flex-wrap justify-center md:flex-nowrap">
         <Input
           placeholder="search"
-          className="lg:!min-w-60 !w-full !max-w-96 "
+          className="xl:!min-w-60 !w-full !max-w-96 "
           icon={<MdOutlineSearch className=" cursor-pointer text-primary" />}
         />
         <Button
           size="md"
           variant="outline"
-          className=" hidden lg:flex flex-grow sm:flex-grow-0"
+          className=" hidden xl:flex flex-grow sm:flex-grow-0"
         >
           {"start-now"}
         </Button>{" "}
         <Button
           size="md"
           variant="ghost"
-          className=" flex lg:hidden flex-grow sm:flex-grow-0"
+          className=" flex xl:hidden flex-grow sm:flex-grow-0"
         >
           {"start-now"}
         </Button>
