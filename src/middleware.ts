@@ -4,8 +4,17 @@ import type { NextRequest } from "next/server";
 const SUPPORTED_LOCALES = ["ar", "en"];
 const DEFAULT_LOCALE = "ar";
 export const COOKIE_NAME = "NEXT_LOCALE";
-// 1 year
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
+
+function getLocaleFromAcceptLanguage(header?: string | null) {
+  if (!header) return null;
+  const parts = header.split(",").map(p => p.split(";")[0].trim());
+  for (const part of parts) {
+    const code = part.split("-")[0]; // e.g. 'en-US' -> 'en'
+    if (SUPPORTED_LOCALES.includes(code)) return code;
+  }
+  return null;
+}
 
 export function middleware(req: NextRequest) {
   const url = req.nextUrl.clone();
@@ -23,14 +32,12 @@ export function middleware(req: NextRequest) {
 
   // Extract first path segment
   const segments = pathname.split("/");
-  // segments[0] === "" because pathname starts with "/"
-  const maybeLocale = segments[1];
+  const maybeLocale = segments[1]; // segments[0] === ""
 
-  // CASE A: Path already contains locale: /ar/... or /en/...
+  // CASE A: already contains supported locale -> ensure cookie matches
   if (SUPPORTED_LOCALES.includes(maybeLocale)) {
     const cookieLocale = req.cookies.get(COOKIE_NAME)?.value;
     if (cookieLocale !== maybeLocale) {
-      // Set cookie to match route locale
       const res = NextResponse.next();
       res.cookies.set({
         name: COOKIE_NAME,
@@ -39,29 +46,34 @@ export function middleware(req: NextRequest) {
         maxAge: COOKIE_MAX_AGE,
         sameSite: "lax",
         secure: process.env.NODE_ENV === "production",
-        // httpOnly: false -> allow client JS to read if you need that
       });
       return res;
     }
     return NextResponse.next();
   }
 
-  // CASE B: Missing locale in path -> redirect to the locale from cookie or default
   const cookieLocale = req.cookies.get(COOKIE_NAME)?.value;
-  const local = cookieLocale == "en" ? "en" : "ar";
-  const chosenLocale = SUPPORTED_LOCALES.includes(local)
-    ? cookieLocale!
-    : DEFAULT_LOCALE;
+  const cookieIsValid = cookieLocale && SUPPORTED_LOCALES.includes(cookieLocale);
 
-  // Prepend locale to path and preserve search params
-  url.pathname = `/${chosenLocale}${pathname}`;
-  return NextResponse.redirect(url);
+  const acceptLangHeader = req.headers.get("accept-language");
+  const acceptLocale = getLocaleFromAcceptLanguage(acceptLangHeader);
+  const chosenLocale = cookieIsValid
+    ? cookieLocale!
+    : acceptLocale ?? DEFAULT_LOCALE;
+
+  url.pathname = `/${chosenLocale}${pathname === "/" ? "" : pathname}`;
+  const res = NextResponse.redirect(url);
+  res.cookies.set({
+    name: COOKIE_NAME,
+    value: chosenLocale,
+    path: "/",
+    maxAge: COOKIE_MAX_AGE,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+  });
+  return res;
 }
 
-/**
- * Apply middleware to all paths except static, api and _next.
- * This matcher prevents middleware from running for assets and APIs.
- */
 export const config = {
   matcher: ["/((?!api|_next|static|.*\\..*).*)"],
 };
