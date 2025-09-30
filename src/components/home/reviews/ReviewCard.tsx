@@ -29,7 +29,7 @@ const ReviewCard = ({
   };
 }) => {
   return (
-    <div className="max-w-lg w-full h-auto  relative flex flex-col bg-orange-50 gap-6 p-7 rounded-3xl">
+    <div className="max-w-lg w-full h-full  relative flex flex-col bg-orange-50 gap-6 p-7 rounded-3xl">
       <div className="w-48 h-full left-0 top-0 absolute bg-gradient-to-l from-orange-50/0 to-orange-400/25 rounded-3xl" />
       <div className="w-48 h-full right-0 top-0 absolute bg-gradient-to-r from-orange-50/0 to-orange-400/25 rounded-3xl" />
 
