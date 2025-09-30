@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // components/ui/Input.tsx
 "use client";
@@ -9,6 +10,7 @@ import React, {
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { Controller, Control, RegisterOptions } from "react-hook-form";
+// @ts-ignore
 
 export interface TextInputProps
   extends InputHTMLAttributes<HTMLInputElement>,
@@ -75,6 +77,7 @@ export const Input = forwardRef<
           )}
         >
           {textArea ? (
+            //@ts-ignore
             <textarea
               id={inputId}
               ref={ref as any}

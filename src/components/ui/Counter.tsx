@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 
 type CounterProps = {
@@ -16,8 +16,8 @@ export default function Counter({
   max = 99,
   onChange,
 }: CounterProps) {
-  const [value, setValue] = useState(initialValue);
-  const t = useTranslations("Counter"); // i18n key namespace
+  const [value] = useState(initialValue);
+  const t = useTranslations("Counter"); 
 
   const handleDecrement = () => {
     if (value > min) {
@@ -26,7 +26,6 @@ export default function Counter({
       onChange?.(newValue);
     }
   };
- 
 
   const handleIncrement = () => {
     if (value < max) {

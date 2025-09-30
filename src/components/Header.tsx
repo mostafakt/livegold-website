@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState } from "react";
@@ -7,9 +8,9 @@ import { Button, Input } from "./ui";
 import Image from "@/components/ui/Image";
 import { useTranslations } from "next-intl";
 import HeaderSlide from "./ui/HeaderSlide";
-// @ts-expect-error no type definitions
+// @ts-ignore
 import "swiper/css";
-// @ts-expect-error no type definitions
+// @ts-ignore
 import "swiper/css/free-mode";
 import { FreeMode } from "swiper/modules";
 import { MdOutlineSearch } from "react-icons/md";

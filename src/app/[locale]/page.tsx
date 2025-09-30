@@ -1,6 +1,4 @@
-import DownloadHero from "@/components/home/DownloadAppSection";
-import AuctionsSection from "@/components/home/AuctionsSection";
-import BannerSection from "@/components/home/BannerSection";
+
 import HeroSection from "@/components/home/hero-section/Hero";
 import WhyLiveGold from "@/components/home/why-us/WhyLiveGold";
 import Divider from "@/components/ui/Divider";

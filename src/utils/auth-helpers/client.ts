@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { User } from "@/store/slices/authSlice";
+import { User } from "@/types/user";
 import Cookies from "js-cookie";
 
 export const TOKEN_COOKIE = "auth_token";

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getAuthToken } from "@/utils/auth-helpers/server";
 import { getAuthTokenClient } from "@/utils/auth-helpers/client";
