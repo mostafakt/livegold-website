@@ -1,0 +1,8 @@
+.recharts-wrapper {
+  width: max-content !important;
+}
+.recharts-surface {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

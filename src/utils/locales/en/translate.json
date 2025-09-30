@@ -1,0 +1,320 @@
+{
+  "home": " Home",
+  "signup": "Sign Up",
+  "search": "Search",
+  "login": "Login In",
+  "main": "Main",
+  "gold": "Gold",
+  "silver": "Silver",
+  "other-metals": "Other Metals",
+  "market": "Market",
+  "map": "Map",
+  "news": "News",
+  "auctions": "Auctions",
+  "blog": "Blog",
+
+  "footer": {
+    "email": "Email",
+    "subscribeText": "Subscribe to our newsletter to receive the latest market updates",
+    "subscribeNow": "Subscribe Now",
+    "pages": "Pages",
+    "importantLinks": "Important Links",
+    "description": "The first app in Saudi Arabia to track gold prices around the clock. We provide accurate and instant updates for local and global markets to help store owners and investors make better decisions.",
+    "home": "Home",
+    "metals": "Metals",
+    "maps": "Maps",
+    "auctions": "Auctions",
+    "faq": "FAQ",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "contact": "Contact Us",
+    "copyright": "© {year}. All rights reserved."
+  },
+  "page-not-found": "Oops! Page Not Found",
+  "back-home": "Return to Homepage",
+  "support": " Contact Support",
+  "need-help": "Need immediate help?",
+  "period": "Period",
+  "usd": "USD",
+  "currency": "Currency",
+  "ounce": "Ounce",
+  "weight": "ًًWeight",
+  "current-price": "Current Price",
+  "price-in-week": "Price Per Week",
+  "highest-price": "Highest price",
+  "lowest-price": "Lowest price",
+  "alloys": "Alloys",
+  "add-to-cart": "Add to cart",
+  "view-more": "View more",
+  "product-added-to-cart": "The Product Has been Added to The Cart",
+  "seller": "Seller",
+  "similar-products": "Similar products",
+  "tax": "Tax",
+  "quantity": "Quantity",
+  "wight": "Wight",
+  "model-number": "Model number",
+  "buy-now": "Buy Now",
+  "reviews": "Reviews",
+  "total": "Total",
+  "sell-through-us": "Sell Through Us",
+  "live-gold": "Live Gold",
+  "full-name": "Full Name",
+  "date-barth": "Date of Birth",
+  "id-number": "ID Number",
+  "id-image": "ID image",
+  "city": "City",
+  "address": "Address",
+  "nearest-stor-to-check": "Nearest stor to check the gold",
+  "continue": "Continue",
+  "phone": "Phone",
+  "email": "Email",
+  "submit": "Submit",
+  "general-info": "General Info",
+  "details": "Details",
+  "pricing": "Pricing",
+  "stock": "Stock",
+  "shipping": "Shipping",
+  "seo-meta": "SEO & Meta",
+
+  "name-ar": "Name (AR)",
+  "name-en": "Name (EN)",
+  "sku": "SKU",
+  "short-desc-ar": "Short Desc (AR)",
+  "short-desc-en": "Short Desc (EN)",
+  "description-ar": "Description (AR)",
+  "description-en": "Description (EN)",
+  "status": "Status",
+  "category-ids": "Category IDs",
+  "tag-ids": "Tag IDs",
+  "brand-ids": "Brand IDs",
+  "materials": "Materials",
+
+  "regular-price": "Regular Price",
+  "sale-price": "Sale Price",
+  "before-discount": "Before Discount",
+  "cost": "Cost",
+
+  "stock-quantity": "Stock Quantity",
+  "stock-status": "Stock Status",
+  "max-quantity": "Max Quantity",
+
+  "length": "Length",
+  "width": "Width",
+  "height": "Height",
+  "shipping-weight": "Weight",
+
+  "meta-title-en": "Meta Title (EN)",
+  "meta-title-ar": "Meta Title (AR)",
+  "meta-desc-en": "Meta Desc (EN)",
+  "meta-desc-ar": "Meta Desc (AR)",
+  "seo-image-url": "SEO Image URL",
+  "attribute": "Attribute",
+  "purity": "Purity",
+  "weight-unit": "Weight Unit",
+  "dimension": "Dimension",
+  "tag": "Tag",
+  "unit-of-measure": "Unit Of Measure",
+  "password": "Password",
+  "first-name": "First Name",
+  "last-name": "Last Name",
+  "language": "Language",
+  "register": "Register",
+  "register-user": "Register Account",
+  "fill-details-to-get-started": "Fill in details to get started",
+  "verify-email": "Verify Email",
+  "verification-code": "Verification Code",
+  "resend-code": "Resend Code",
+  "resend-in": "Resend in",
+  "back-to-login": "Back to Login",
+  "already-have-account": "Already have an account?",
+  "didnot-receive-code": "Didn't receive the code?",
+  "enter-your-password": "Enter your password",
+  "forgot-password": "Forgot Password?",
+  "remember-me": "Remember me",
+  "dont-have-account": "Don't have an account?",
+  "guest-user-id-is-required": "Guest user ID is required",
+  "invalid-email-address": "Invalid email address",
+  "password-too-short": "Password must be at least 6 characters",
+  "first-name-is-required": "First name is required",
+  "last-name-is-required": "Last name is required",
+  "phone-number-is-required": "Phone number is required",
+  "language-is-required": "Language is required",
+  "passwords-do-not-match": "Passwords do not match",
+  "password-is-required": "كلمة المرور مطلوبة",
+  "name-ar-required": "Arabic name is required",
+  "name-en-required": "English name is required",
+  "at-least-one-category-required": "At least one category is required",
+  "at-least-one-material-type-required": "At least one material type is required",
+  "quantity-required": "Quantity is required",
+  "review-submit": "Review Submit",
+  "continue-shopping": "Continue shopping",
+  "add-some-items-to-get-started": " Add some items to get started",
+  "cart-empty": "Cart empty",
+  "max-rating": "Max Rating",
+  "min-rating": "Min Rating",
+  "in-stock": "In Stock",
+  "out-of-stock": "Out of Stock",
+  "profile": "Profile",
+  "logout": "Logout",
+  "available-on-backorder": "Available on back order",
+  "order-summary": "Order Summary",
+  "loading": "Loading",
+  "AboutUs": {
+    "meta": {
+      "title": "About Us - Live Gold",
+      "description": "Learn about Live Gold - the leading Saudi platform for real-time gold price tracking"
+    },
+    "breadcrumb": {
+      "home": "Home"
+    },
+    "title": "About Live Gold",
+    "hero": {
+      "subtitle": "The leading Saudi platform for real-time gold price tracking",
+      "appPreview": "Live Gold App"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "Providing accurate, real-time gold market information to empower your investment decisions"
+    },
+    "features": {
+      "realTime": {
+        "title": "Real-Time Updates",
+        "description": "Instant price updates with advanced market tracking technology"
+      },
+      "accuracy": {
+        "title": "High Accuracy",
+        "description": "Precise gold price data from reliable local and global sources"
+      },
+      "accessibility": {
+        "title": "Easy Access",
+        "description": "Available across all devices with user-friendly interface"
+      },
+      "reliability": {
+        "title": "Complete Reliability",
+        "description": "Trusted platform with continuous service and support"
+      }
+    },
+    "stats": {
+      "accuracy": "Accuracy Rate",
+      "availability": "Service Availability",
+      "users": "Active Users",
+      "updateSpeed": "Update Speed"
+    },
+    "content": {
+      "title": "Why Choose Live Gold?",
+      "placeholder": {
+        "title": "Our Platform",
+        "description": "Experience the future of gold trading with our advanced platform"
+      }
+    },
+    "cta": {
+      "title": "Start Your Gold Trading Journey Today",
+      "description": "Join thousands of satisfied users who trust Live Gold for accurate market information",
+      "getStarted": "Get Started",
+      "learnMore": "Learn More"
+    },
+    "videoNotSupported": "Your browser does not support the video tag."
+  },
+
+  "start-now": "Start Now",
+  "about-us": "About Us",
+  "contact-us": "Contact Us",
+
+  "TermAndCondition": {
+    "meta": {
+      "title": "Terms and Conditions - Live Gold",
+      "description": "Read the terms and conditions of using the Live Gold platform"
+    },
+    "breadcrumb": {
+      "home": "Home"
+    },
+    "title": "Terms and Conditions of Use",
+    "subtitle": "Please read these terms carefully before using our services",
+    "content": "Full terms and conditions content...",
+    "videoNotSupported": "Your browser does not support video playback",
+    "lastUpdated": "Last updated",
+    "cta": {
+      "title": "Do you have questions?",
+      "description": "If you have any questions about our terms and conditions, feel free to contact our support team.",
+      "contact": "Contact Support",
+      "learnMore": "Learn More"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We recognize the importance of staying updated with rapid changes in financial markets",
+    "discover": "Discover the latest gold prices moment by moment",
+    "description": "Live Gold is the ideal choice for providing accurate and instant information about gold prices in Saudi Riyal, making it easier for traders and investors in the Kingdom to follow the local market. We also provide gold prices in dollars to follow the global market.",
+    "connect": "Get in Touch",
+    "help": "Looking for help? Fill out the form and start a new adventure.",
+    "headquarters": "Headquarters",
+    "location": "Jeddah, Saudi Arabia",
+    "phone": "Phone",
+    "support": "Support",
+    "follow": "Follow Us",
+    "lets-connect": "Let's Connect",
+    "assistance": "We're here to help! If you have any inquiries or need support, don't hesitate to contact us. Our team is ready to answer all your questions and provide the assistance you need.",
+    "form": {
+      "email": "Email Address",
+      "message": "How can we help you?",
+      "send": "Send Message",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message. Please try again."
+    }
+  },
+  "privacy-policy": "Privacy Policy",
+  "term-and-condition": "Term and Condition",
+
+  "privacy_policy": {
+    "breadcrumb": {
+      "home": "Home",
+      "privacy-policy": "Privacy Policy"
+    },
+    "title": "Privacy Policy",
+    "additional-info": {
+      "title": "Additional Information",
+      "description": "For inquiries about our privacy policy, please contact our support team."
+    },
+    "loading": {
+      "title": "Loading Privacy Policy..."
+    }
+  },
+  "404": {
+    "title": "Page Not Found",
+    "subtitle": "Sorry, we couldn't find the page you're looking for.",
+    "badge": "Error 404: Page Missing",
+    "return": "Return to Homepage",
+    "contact": "Contact our support team",
+    "need-help": "Need help?"
+  },
+  "year": "Year",
+  "month": "Month",
+  "months": "Months",
+  "day": "Day",
+  "make-price-alert": "Generate Price alert",
+  "direct": "Direct",
+  "why": {
+    "heading": "Why Live Gold?",
+    "card1": {
+      "title": "Safe buying and selling between individuals and merchants",
+      "desc": "A trusted C2C platform that makes buying and selling gold easy — with merchant accounts, strict verification, user ratings, and secure online payment options."
+    },
+    "card2": {
+      "title": "Accurate real-time prices",
+      "desc": "We provide instant updates for gold and precious metals prices from reliable sources, with simplified charts to help users understand market movements."
+    },
+    "card3": {
+      "title": "Professional online auctions",
+      "desc": "Join organized auctions on gold and jewelry with clear timers, instant notifications, and technical support to ensure a fair and secure experience."
+    },
+    "card4": {
+      "title": "Dedicated support & continuous follow-up",
+      "desc": "A dedicated support team ready to help and respond to your inquiries around the clock."
+    }
+  },
+  "partners": "Partners",
+  "testimonials": "Testimonials",
+  "faq": "FAQ",
+  "": "",
+  "": ""
+}
