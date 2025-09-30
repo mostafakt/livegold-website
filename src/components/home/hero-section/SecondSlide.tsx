@@ -55,13 +55,20 @@ const columns: Column<Row>[] = [
 ];
 const SecondSlide = () => {
   return (
-    <div className=" flex flex-col  gap-4 items-center">
-      <Select
-        placeholder="gold"
-        label="metal"
-        options={[{ value: "gold", label: "ذهب" }]}
-        className="w-fit"
-      />
+    <div className=" flex flex-col  gap-4 items-start">
+      <div className="flex flex-col md:flex-row gap-4 items-center">
+        <Select
+          placeholder="gold"
+          label="metal"
+          options={[{ value: "gold", label: "ذهب" }]}
+          className="min-w-64"
+        />{" "}
+        <Select
+          label="price"
+          options={[{ value: "gold", label: "ذهب" }]}
+          className="min-w-64"
+        />
+      </div>
 
       <Table<Row>
         data={rows}

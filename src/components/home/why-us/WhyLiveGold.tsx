@@ -21,27 +21,35 @@ const WhyLiveGold = () => {
               imageSrc="/images/homepage/WHY-LIVE.png"
               title={t("why.card1.title")}
               desc={t("why.card1.desc")}
+              height={153}
+              width={266}
             />
 
             {/* Card 2 */}
             <Card
-              imageSrc="/images/homepage/WHY-LIVE.png"
+              imageSrc="/images/homepage/why-live-gold/1.png"
               title={t("why.card2.title")}
               desc={t("why.card2.desc")}
+              height={163}
+              width={288}
             />
 
             {/* Card 3 */}
             <Card
-              imageSrc="/images/homepage/WHY-LIVE.png"
+              imageSrc="/images/homepage/Auctions.png"
               title={t("why.card3.title")}
               desc={t("why.card3.desc")}
+              height={105}
+              width={162}
             />
 
             {/* Card 4 */}
             <Card
-              imageSrc="/images/homepage/WHY-LIVE.png"
+              imageSrc="/images/homepage/why-live-gold/3.png"
               title={t("why.card4.title")}
               desc={t("why.card4.desc")}
+              height={131}
+              width={131}
             />
           </div>
         </div>
@@ -55,17 +63,26 @@ export default WhyLiveGold;
 /* small Card sub-component */
 function Card({
   imageSrc,
+  height,
+  width,
   title,
   desc,
 }: {
   imageSrc: string;
+  height?: number;
+  width?: number;
   title: string;
   desc: string;
 }) {
   return (
     <div className="p-2 relative inline-flex flex-col justify-center items-center gap-2">
       <div className="w-5/6 h-96 right-0 -top-6 absolute bg-[radial-gradient(ellipse_54%_54%_at_50%_50%,rgba(249,193,122,0.3)_0%,rgba(255,251,244,0)_100%)] rounded-full" />
-      <Image src={imageSrc} alt={title} width={280} height={168} />
+      <Image
+        src={imageSrc}
+        alt={title}
+        width={width ?? 200}
+        height={height ?? 200}
+      />
       <div className="text-center text-primary text-lg md:text-2xl font-medium">
         {title}
       </div>

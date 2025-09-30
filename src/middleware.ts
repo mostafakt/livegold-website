@@ -48,7 +48,8 @@ export function middleware(req: NextRequest) {
 
   // CASE B: Missing locale in path -> redirect to the locale from cookie or default
   const cookieLocale = req.cookies.get(COOKIE_NAME)?.value;
-  const chosenLocale = SUPPORTED_LOCALES.includes(cookieLocale ?? "ar")
+  const local = cookieLocale == "en" ? "en" : "ar";
+  const chosenLocale = SUPPORTED_LOCALES.includes(local)
     ? cookieLocale!
     : DEFAULT_LOCALE;
 

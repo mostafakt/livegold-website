@@ -1,5 +1,6 @@
 import Image from "@/components/ui/Image";
 import { getLocalizedData } from "@/utils/helpers";
+import { MdPerson2, } from "react-icons/md";
 
 const ReviewCard = ({
   review,
@@ -34,7 +35,11 @@ const ReviewCard = ({
 
       <div className="flex gap-5 lg:gap-8 items-center">
         <div className="p-3 bg-white z-50 rounded-full">
-          <Image src={review.logo} alt="alt" width={54} height={54} />
+          {review.logo ? (
+            <Image src={review.logo} alt="alt" width={54} height={54} />
+          ) : (
+            <MdPerson2 className=" text-primary" />
+          )}
         </div>
         <div className="text-start  justify-start text-neutral-800 text-lg lg:text-xl font-bold  ">
           {getLocalizedData(review.name)}{" "}

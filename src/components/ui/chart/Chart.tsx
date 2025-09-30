@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 import React from "react";
+//@ts-ignore
 import "./chart.css";
 import {
   ResponsiveContainer,
@@ -60,9 +62,9 @@ const PriceAreaChart: React.FC<Props> = ({ data }) => {
             tickFormatter={(v) => `$${v}`}
             tick={{ fill: "#6B7280", fontSize: 12 }}
             domain={[0, "dataMax + 200"]}
-            width={1}
-            dx={-12}
-
+            width={20}
+            dx={-25}
+            className="px-4"
           />
 
           {/* <Tooltip

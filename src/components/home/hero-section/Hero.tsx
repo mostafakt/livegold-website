@@ -1,7 +1,6 @@
 import EmblaCarousel from "../../ui/Carousel";
 import FirstSlide from "./FirstSlide";
 import SecondSlide from "./SecondSlide";
-import ThirdSlide from "./ThirdSlide";
 
 
 export default function HeroSection() {
@@ -11,7 +10,7 @@ export default function HeroSection() {
       slides={[
         <FirstSlide key={1} />,
         <SecondSlide key={2} />,
-        <ThirdSlide key={3} />,
+        // <ThirdSlide key={3} />,
       ]}
       />
     </div>

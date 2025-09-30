@@ -60,7 +60,7 @@ const pages = [
   { name: "about-us", href: "/about-us" },
   { name: "term-and-condition", href: "/term-and-condition" },
   { name: "contact-us", href: "/contact-us" },
-  { name: "faq", href: "/faq" },
+  // { name: "faq", href: "/faq" },
   { name: "privacy-policy", href: "/privacy-policy" },
 ];
 export default function Header() {
