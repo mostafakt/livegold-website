@@ -189,14 +189,14 @@ export default function Header() {
         <div className="flex justify-end p-4">
           <button
             onClick={() => setIsDrawerOpen(false)}
-            className="text-white p-2"
+            className="text-primary p-2"
             aria-label="Close navigation menu"
           >
             <XIcon className="h-7 w-7" />
           </button>
         </div>
-        <div className="flex flex-col p-4">
-          <div className="flex w-full items-center justify-center">
+        <div className="flex flex-col  ">
+          <div className="flex w-full items-center justify-center !mb-6">
             <HeaderActions />
           </div>
           {pages.map((page) => {

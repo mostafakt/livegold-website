@@ -29,7 +29,7 @@ const ReviewCard = ({
   };
 }) => {
   return (
-    <div className="max-w-lg w-full   relative flex flex-col  bg-orange-50 gap-3 px-7 py-7 rounded-3xl min-h-full">
+    <div className="max-w-lg w-full   relative flex flex-col  bg-orange-50 gap-3 p-4 md:p-5 lg:p-7 rounded-3xl min-h-full">
       <div className="w-48 h-full left-0 top-0 absolute bg-gradient-to-l from-orange-50/0 to-orange-400/25 rounded-3xl" />
       <div className="w-48 h-full right-0 top-0 absolute bg-gradient-to-r from-orange-50/0 to-orange-400/25 rounded-3xl" />
 
@@ -41,12 +41,12 @@ const ReviewCard = ({
             <MdPerson2 className=" text-primary" />
           )}
         </div>
-        <div className="text-start  justify-start text-neutral-800 text-lg lg:text-xl font-bold  ">
+        <div className="text-start  justify-start text-neutral-800 text-sm md:text-lg lg:text-xl font-bold  ">
           {ManageLocale.getLocalizedData(review.name)}{" "}
         </div>
       </div>
       <div
-        className=" w-full text-start justify-start text-neutral-800 text-xl font-medium   leading-7"
+        className=" w-full text-start justify-start text-neutral-800 text-sm md:text-lg lg:text-xl  font-medium   leading-7"
         dangerouslySetInnerHTML={{
           __html: ManageLocale.getLocalizedData(review.description),
         }}
