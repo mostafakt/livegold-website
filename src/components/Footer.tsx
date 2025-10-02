@@ -18,7 +18,7 @@ export default function Footer({ logo, className }: FooterProps) {
   return (
     <footer
       className={clsx(
-        "w-full bg-slate-800 text-white px-3 lg:px-16 pt-4 lg:pt-12",
+        "w-full bg-slate-800 text-white  px-3 lg:px-16  2xl:px-24 pt-4 lg:pt-12",
         className
       )}
     >

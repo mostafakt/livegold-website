@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { IBlogsRes } from "@/services/blogs";
-import { getLocalizedData } from "@/utils/helpers";
-import React, { useEffect, useRef, useState } from "react";
-import ExpandableText from "../ExpandableText";
+import { IBlogRes, IBlogsRes } from "@/services/blogs";
+import { ManageLocale } from "@/utils/helpers";
 import EmblaCarousel from "../ui/Carousel";
 import Image from "../ui/Image";
 import { useTranslations } from "next-intl";
@@ -11,130 +9,128 @@ import { FreeMode } from "swiper/modules";
 import { SwiperSlide, Swiper } from "swiper/react";
 import IconButton from "../ui/IconButton";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
+import { useRouter } from "next/navigation";
+import BlogCard from "./BlogCard";
 
-const BlogsBody = ({ blogs }: { blogs: IBlogsRes }) => {
-  const [selectedBlog, setSelectedBlog] = useState(0);
-
+const BlogsBody = ({
+  blogs,
+  blog,
+  locale,
+}: {
+  blogs: IBlogsRes;
+  blog: IBlogRes;
+  locale: "ar" | "en";
+}) => {
+  const index = blogs.results.findIndex((obj) => obj.id === blog.id);
   const t = useTranslations();
-  const thumbsSwiperRef = useRef<any>(null);
-  useEffect(() => {
-    const s = thumbsSwiperRef.current;
-    if (!s) return;
-    s.slideTo(selectedBlog, 300);
-  }, [selectedBlog]);
+  const router = useRouter();
+
   return (
-    <div className=" flex flex-col w-full mt-3 ">
-      <div className="  flex  flex-col   gap-4 text-start justify-between w-full">
-        <div className="  flex items-start md:items-center  text-primary text-lg   font-bold w-full  ">
-          {getLocalizedData(blogs.results[selectedBlog].title)}
-        </div>{" "}
-        <div className=" w-full  ">
-          <ExpandableText
-            text={
-              <div
-                className="w-full   text-secondary-dark text-start justify-start text-Color-2 text-md font-normal"
-                dangerouslySetInnerHTML={{
-                  __html: getLocalizedData(blogs.results[selectedBlog].content),
-                }}
-              />
-            }
-            lines={2}
+    <div className=" flex flex-col w-full pb-10">
+      {/* cover image or video */}
+      <div className="flex w-full h-full items-center justify-center    lg:!max-h-[65vh]   3xl:!max-h-[45vh]  overflow-hidden  ">
+        <Image
+          src={blog.image ?? "/images/homepage/hero/2.webp"}
+          alt="alt"
+          className="  !max-h-200   w-full   !h-full "
+          width={1920}
+          height={800}
+          priority
+        />
+      </div>
+      <div className=" flex flex-col w-full   p-3 xl:px-16 2xl:px-24  mt-4  items-start ">
+        {/* body */}
+        <div className="  flex  flex-col   gap-4 text-center justify-between w-full">
+          {/* title */}
+          <div className="  flex  items-center  text-primary text-2xl  justify-center  font-bold w-full  ">
+            {ManageLocale.getLocalizedData(blog.title,locale)}
+          </div>{" "}
+          <div className=" w-full mt-6  ">
+            {/* description */}
+            <div
+              className="w-full   text-secondary-dark text-start justify-start text-Color-2 text-md font-normal"
+              dangerouslySetInnerHTML={{
+                __html: ManageLocale.getLocalizedData(blog.content,locale),
+              }}
+            />
+          </div>
+        </div>
+        {/* blog images */}
+        <div className="mt-10 w-full items-center justify-center ">
+          <EmblaCarousel
+            slides={[
+              <div key={12} className="w-full flex items-center justify-center">
+                <Image
+                  src={blog.image ?? "/images/homepage/hero/3.webp"}
+                  alt="alt"
+                  className=" max-h-96  rounded-lg"
+                  width={900}
+                  height={402}
+                />
+              </div>,
+            ]}
           />
         </div>
-      </div>
-      <div className="mt-4 w-full items-center justify-center">
-        <EmblaCarousel
-          slides={blogs.results.map((t, idx) => (
-            <div key={idx} className="w-full flex items-center justify-center">
-              <Image
-                src={"/images/brand/brand.png"}
-                alt="alt"
-                width={900}
-                height={402}
-              />
-            </div>
-          ))}
-        />
-      </div>
-      <div className=" text-secondary-dark mt-14  text-start justify-start text-Secondary-2 text-xl md:text-3xl font-bold  ">
-        {t("public-blogs")}
-      </div>
-      <div className="w-full mt-4 ">
-        <Swiper
-          modules={[FreeMode]}
-          spaceBetween={16}
-          slidesPerView="auto"
-          freeMode={true}
-          grabCursor={true}
-          onSwiper={(swiper) => {
-            thumbsSwiperRef.current = swiper;
-            swiper.slideTo(selectedBlog, 0);
-          }}
-        >
-          {blogs.results.map((t, idx) => (
-            <SwiperSlide
-              key={idx}
-              className=" max-w-full sm:w-96 sm:max-w-96 h-full  py-2 cursor-pointer "
-            >
-              <div
-                onClick={() => {
-                  setSelectedBlog(idx);
-                }}
-                className={`flex flex-col  w-full max-w-full sm:max-w-96   h-full rounded-xl shadow-md ${idx == selectedBlog ? " border border-primary " : ""} `}
+        <div className=" text-secondary-dark mt-14  text-start justify-start text-Secondary-2 text-xl md:text-3xl font-bold  ">
+          {t("public-blogs")}
+        </div>
+        <div className="w-full mt-4 ">
+          <Swiper
+            modules={[FreeMode]}
+            spaceBetween={16}
+            slidesPerView="auto"
+            freeMode={true}
+            grabCursor={true}
+          >
+            {blogs?.results.map((t, idx) => (
+              <SwiperSlide
+                key={idx}
+                className=" max-w-full sm:w-96 sm:max-w-96 h-full  py-2 cursor-pointer "
               >
-                <Image
-                  src={"/images/brand/brand.png"}
-                  alt="alt"
-                  className="w-full"
-                  width={384}
-                  height={246}
+                <BlogCard
+                  content={t.content}
+                  title={t.title}
+                  image={t.image ?? "/images/homepage/hero/10.webp"}
+                  id={t.id}
+                  isSelected={t.id == blog.id}
                 />
-                <div className="flex flex-col  mb-7  gap-2 mt-4 px-4">
-                  <div className="text-start justify-center text-primary text-base font-bold ">
-                    {getLocalizedData(t.title)}
-                  </div>
-                  <div
-                    className=" text-start h-10 overflow-hidden justify-start text-neutral-800 text-sm font-normal  "
-                    dangerouslySetInnerHTML={{
-                      __html: getLocalizedData(t.content),
-                    }}
-                  />
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-      <div className=" w-full  flex items-center justify-start mt-6 gap-6 ">
-        <IconButton
-          icon={
-            <div className="flex items-center justify-center  bg-primary-300  p-2 rounded-full w-10 h-10  ">
-              <MdArrowForwardIos className="w-6 h-6 text-white bg-none" />
-            </div>
-          }
-          ariaLabel="Previous image"
-          variant="ghost"
-          size="md"
-          onClick={() => {
-            setSelectedBlog((prev) => Math.max(0, prev - 1));
-          }}
-        />
-        <IconButton
-          icon={
-            <div className="flex items-center justify-center text-primary p-2 rounded-full bg-primary-300 w-10 h-10  ">
-              <MdArrowBackIosNew className="w-6 h-6 text-white   " />
-            </div>
-          }
-          ariaLabel="Next image"
-          variant="ghost"
-          size="md"
-          onClick={() => {
-            setSelectedBlog((prev) =>
-              Math.min(blogs.results.length - 1, prev + 1)
-            );
-          }}
-        />
+        <div className=" w-full  flex items-center justify-start mt-6 gap-6 ">
+          <IconButton
+            icon={
+              <div className="flex items-center justify-center  bg-primary-300  p-2 rounded-full w-10 h-10  ">
+                <MdArrowForwardIos className="w-6 h-6 text-white bg-none ltr:rotate-180" />
+              </div>
+            }
+            ariaLabel="Previous image"
+            variant="ghost"
+            size="md"
+            onClick={() => {
+              router.push("blogs/" + blogs.results[Math.max(0, index - 1)].id);
+            }}
+          />
+          <IconButton
+            icon={
+              <div className="flex items-center justify-center text-primary p-2 rounded-full bg-primary-300 w-10 h-10  ">
+                <MdArrowBackIosNew className="w-6 h-6 text-white ltr:rotate-180  " />
+              </div>
+            }
+            ariaLabel="Next image"
+            variant="ghost"
+            size="md"
+            onClick={() => {
+              router.push(
+                "/blogs/" +
+                  blogs.results[Math.min(blogs?.results.length - 1, index + 1)]
+                    .id
+              );
+            }}
+          />
+        </div>
       </div>
     </div>
   );

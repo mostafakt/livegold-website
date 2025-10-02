@@ -64,7 +64,18 @@ const PriceAreaChart: React.FC<Props> = ({ data }) => {
             domain={[0, "dataMax + 200"]}
             width={20}
             dx={-25}
-            className="px-4"
+            className=" block ltr:hidden"
+          />
+          
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            tickFormatter={(v) => `$${v}`}
+            tick={{ fill: "#6B7280", fontSize: 12 }}
+            domain={[0, "dataMax + 200"]}
+            width={20}
+            dx={-25}
+            className="ltr:hidden"
           />
 
           {/* <Tooltip

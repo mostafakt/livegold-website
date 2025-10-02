@@ -5,25 +5,27 @@ import Breadcrumb from "@/components/ui/BreadCamp";
 import ContactForm from "./ContactForm";
 import ContactInfo from "./ContactInfo";
 import { getTranslations } from "next-intl/server";
+import { ManageLocale } from "@/utils/helpers";
 
 interface ContactUsClientProps {
   data: IContactUs;
-  locale: "en" | "ar";
+  locale: "ar" | "en";
 }
 
 export default async function ContactUsClient({
   data,
   locale,
 }: ContactUsClientProps) {
-  const translations = await getTranslations("contact");
+  const translations = await getTranslations({ locale, namespace: "contact" });
+
   const breadcrumbItems = [
-    { label: locale === "ar" ? "الرئيسية" : "Home", href: "/" },
-    { label: data.title?.[locale] || translations("title"), href: "#" },
+    { label: translations("home"), href: "/" },
+    { label: ManageLocale.getLocalizedData(data.title, locale), href: "#" },
   ];
 
   return (
-    <div className="min-h-screen bg-primary-bg pt-24 pb-16">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen flex flex-col items-center  pt-10 lg:pt-24 pb-16">
+      <div className="   px-3 lg:px-16  2xl:px-24 w-full  ">
         {/* Breadcrumb */}
         <div className="mb-8">
           <Breadcrumb items={breadcrumbItems} />
@@ -31,8 +33,8 @@ export default async function ContactUsClient({
 
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-6 font-tajawal">
-            {data.title?.[locale] || translations("title")}
+          <h1 className="text-4xl font-bold text-neutral-900 mb-4 ">
+            {translations("title")}
           </h1>
           <p className="text-xl text-neutral-700 max-w-3xl mx-auto leading-relaxed">
             {translations("subtitle")}
@@ -44,7 +46,7 @@ export default async function ContactUsClient({
         <div className="bg-white rounded-2xl shadow-drop p-8 mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-neutral-900 mb-6 font-tajawal">
+              <h2 className="text-3xl font-bold text-neutral-900 mb-6 ">
                 {translations("discover")}
               </h2>
               <p className="text-neutral-700 text-lg leading-relaxed">
@@ -52,7 +54,7 @@ export default async function ContactUsClient({
               </p>
             </div>
             <div className="bg-card-bg-gradient rounded-xl p-8 border border-primary-400">
-              <h3 className="text-2xl font-bold text-neutral-900 mb-4 font-tajawal">
+              <h3 className="text-2xl font-bold text-neutral-900 mb-4 ">
                 {translations("lets-connect")}
               </h3>
               <p className="text-neutral-700 mb-6">
@@ -89,15 +91,12 @@ export default async function ContactUsClient({
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Contact Information */}
           <div className="lg:col-span-1">
-            <ContactInfo
-              data={data}
-              locale={locale}
-            />
+            <ContactInfo data={data} />
           </div>
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <ContactForm locale={locale} />
+            <ContactForm />
           </div>
         </div>
       </div>

@@ -10,6 +10,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      spacing: {
+        "200": "800px",
+        "75": "300px",
+        "112": "450px",
+      },
       colors: {
         "gray-text": "#737373",
         primary: {

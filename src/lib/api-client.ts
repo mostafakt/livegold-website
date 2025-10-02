@@ -36,8 +36,7 @@ export async function apiFetch<T = any>(
     headers.set("Content-Type", "application/json");
   }
 
-  // attach token if requested
-  if (auth) {
+  if (false) {
     let token: string | null = null;
     if (typeof window === "undefined") {
       // server-side
@@ -96,7 +95,10 @@ export async function apiFetch<T = any>(
     // helpful logging for debugging
     // eslint-disable-next-line no-console
     console.error(`[apiFetch] ${res.status} ${url} ->`, body);
+    console.log(url);
+
     const message = body?.message ?? res.statusText ?? "Request failed";
+
     const err: any = new Error(message);
     err.status = res.status;
     err.body = body;

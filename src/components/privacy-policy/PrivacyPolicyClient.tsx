@@ -4,6 +4,7 @@ import { IPrivacyPolicy } from "@/types/privacy-policy";
 import { useEffect, useState } from "react";
 import Breadcrumb from "@/components/ui/BreadCamp";
 import { useTranslations } from "next-intl";
+import styles from "./privacy.module.css";
 
 interface PrivacyPolicyClientProps {
   data: IPrivacyPolicy;
@@ -23,7 +24,7 @@ export default function PrivacyPolicyClient({
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-primary-bg pt-24 pb-16">
+      <div className="min-h-screen  bg-primary-bg pt-24 pb-16">
         <div className="container mx-auto px-4">
           <div className="animate-pulse">
             <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
@@ -41,36 +42,28 @@ export default function PrivacyPolicyClient({
   const breadcrumbItems = [
     { label: t("breadcrumb.home"), href: "/" },
     { label: data.title?.[locale] || t("breadcrumb.privacy-policy"), href: "#" },
-  ];
-
+  ]; 
   return (
-    <div className="min-h-screen bg-primary-bg pt-24 pb-16">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-primary-bg flex flex-col items-center w-full py-10 lg:py-24 ">
+      <div className="w-full   px-3 lg:px-16  2xl:px-24 ">
         {/* Breadcrumb */}
-        <div className="mb-8">
+        <div className="mb-8 w-full">
           <Breadcrumb items={breadcrumbItems} />
         </div>
 
         {/* Header Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-neutral-900 mb-4 font-tajawal">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-bold text-neutral-900   ">
             {data.title?.[locale] || t("title")}
           </h1>
-          <div className="w-24 h-1 bg-primary-gradient mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-primary-gradient mx-auto rounded-full mt-6"></div>
         </div>
 
         {/* Content Section */}
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl text-black shadow-drop p-8 md:p-12">
             <div
-              className="prose prose-lg max-w-none 
-                        prose-h2:text-2xl prose-h2:font-bold prose-h2:text-neutral-900 prose-h2:mt-8 prose-h2:mb-4
-                        prose-h1:text-3xl prose-h1:font-bold prose-h1:text-neutral-900 prose-h1:mt-12 prose-h1:mb-6
-                        prose-p:text-neutral-700 prose-p:leading-relaxed prose-p:mb-4
-                        prose-hr:my-8 prose-hr:border-neutral-200
-                        prose-strong:text-neutral-900 prose-strong:font-bold
-                        prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-4
-                        prose-li:text-neutral-700 prose-li:mb-2"
+              className={` ${styles.wrapper}  `}
               dangerouslySetInnerHTML={{
                 __html: data.content?.[locale] || "<p>No content available</p>",
               }}
@@ -96,7 +89,7 @@ export default function PrivacyPolicyClient({
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-bold text-neutral-900 mb-2 font-tajawal">
+                <h3 className="text-lg font-bold text-neutral-900 mb-2 ">
                   {t("additional-info.title")}
                 </h3>
                 <p className="text-neutral-700">

@@ -13,7 +13,7 @@ export default async function AboutUsContent({
   data,
   locale,
 }: AboutUsContentProps) {
-  const t = await getTranslations("AboutUs");
+  const t = await getTranslations({ locale, namespace: "AboutUs" });
 
   const title = data?.title?.[locale as keyof typeof data.title] || t("title");
   const content =
@@ -35,12 +35,12 @@ export default async function AboutUsContent({
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-neutral-200 py-16">
-        <div className="container mx-auto px-4">
+      <section className="bg-neutral-200  py-10 lg:py-24 ">
+        <div className=" w-full items-center justify-center    px-3 lg:px-16  2xl:px-24 ">
           <Breadcrumb items={breadcrumbItems} />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-8">
             <div className="text-secondary-dark">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-tajawal leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6  leading-tight">
                 {title}
               </h1>
               <p className="text-xl md:text-2xl leading-relaxed opacity-95">
@@ -59,8 +59,8 @@ export default async function AboutUsContent({
             </div>
 
             {/* Hero Image */}
-            <div className="relative">
-              <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+            <div className="w-full flex justify-end ">
+              <div className="bg-white/20 w-full relative max-w-lg backdrop-blur-sm rounded-3xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
                 <div className="bg-white rounded-2xl p-6 shadow-2xl">
                   <div className="aspect-video bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center">
                     <div className="text-white text-center">
@@ -79,19 +79,19 @@ export default async function AboutUsContent({
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Floating Elements */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 bg-yellow-300 rounded-full opacity-20 animate-pulse"></div>
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary-200 rounded-full opacity-30 animate-pulse delay-1000"></div>
+                {/* Floating Elements */}
+                <div className="absolute -top-4 -left-4 w-24 h-24 bg-yellow-300 rounded-full opacity-20 animate-pulse"></div>
+                <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary-200 rounded-full opacity-30 animate-pulse delay-1000"></div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-white w-full items-center justify-center    px-3 lg:px-16  2xl:px-24 ">
+        <div className="container ">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Content */}
             <div className="prose prose-lg max-w-none">

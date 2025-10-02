@@ -63,7 +63,7 @@ export default function ExpandableText({
   `;
 
   return (
-    <div className={`relative ${className}`} dir="rtl">
+    <div className={`relative ${className}`} >
       <div ref={textRef} id={id} className={contentStyles} aria-live="polite">
         {text}
       </div>

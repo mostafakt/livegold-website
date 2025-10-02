@@ -3,9 +3,9 @@ import EmblaCarousel from "../../ui/Carousel";
 import ReviewCard from "./ReviewCard";
 import { getTestimonials } from "@/services/testimonials";
 
-const Reviews = async () => {
+const Reviews = async ({ locale }: { locale: "ar" | "en" }) => {
   const reviews = await getTestimonials();
-  const t = await getTranslations();
+  const t = await getTranslations({ locale });
   return (
     <div className=" p-3 lg:p-16 flex flex-col items-center gap-10 ">
       <div className="text-center justify-start text-primary text-4xl font-bold  ">
@@ -13,10 +13,10 @@ const Reviews = async () => {
       </div>
       <EmblaCarousel
         breakpoints={{ lg: 3, md: 2, base: 1, sm: 2 }}
-        slides={reviews?.results?.map((i) => (
+        slides={[...reviews?.results, ...reviews?.results]?.map((i) => (
           <div
             key={i.id}
-            className="flex items-center gap-5  flex-wrap justify-center"
+            className="flex items-center gap-5  min-h-full h-full flex-wrap justify-center"
           >
             <ReviewCard review={i} />
           </div>

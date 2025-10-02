@@ -60,7 +60,7 @@ export function getAuthTokenClient(): {
   const expiresAt = Cookies.get(TOKEN_EXPIRES_COOKIE) ?? null;
   //@ts-ignore
   const userString = Cookies.get(USER) ?? null;
-  const user = userString ? JSON.parse(userString) as User : null;
+  const user = userString ? (JSON.parse(userString) as User) : null;
 
   return { token, isGuest, expiresAt, user };
 }

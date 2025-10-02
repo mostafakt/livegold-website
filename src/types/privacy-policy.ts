@@ -1,6 +1,6 @@
 export interface LocaleString {
-  ar?: string;
-  en?: string;
+  ar: string;
+  en: string;
 }
 
 export interface LocaleArrayString {

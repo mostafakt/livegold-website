@@ -6,21 +6,17 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-interface ContactFormProps {
-  locale: "ar" | "en";
-}
-
 interface FormData {
   email: string;
   message: string;
 }
 
-export default function ContactForm({ locale }: ContactFormProps) {
+export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
-  const translations = useTranslations('contact');
+  const translations = useTranslations("contact");
   const {
     register,
     handleSubmit,
@@ -50,7 +46,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
 
   return (
     <div className="bg-white rounded-2xl shadow-drop p-8">
-      <h3 className="text-2xl font-bold text-neutral-900 mb-4 font-tajawal">
+      <h3 className="text-2xl font-bold text-neutral-900 mb-4 ">
         {translations("lets-connect")}
       </h3>
       <p className="text-neutral-700 mb-8">{translations("assistance")}</p>
@@ -109,7 +105,6 @@ export default function ContactForm({ locale }: ContactFormProps) {
               errors.email ? "border-red-500" : "border-neutral-300"
             }`}
             placeholder={translations("form.email")}
-            dir={locale === "ar" ? "rtl" : "ltr"}
           />
           {errors.email && (
             <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
@@ -138,7 +133,6 @@ export default function ContactForm({ locale }: ContactFormProps) {
               errors.message ? "border-red-500" : "border-neutral-300"
             }`}
             placeholder={translations("form.message")}
-            dir={locale === "ar" ? "rtl" : "ltr"}
           />
           {errors.message && (
             <p className="mt-1 text-sm text-red-600">
@@ -174,7 +168,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
                   d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                 ></path>
               </svg>
-              {locale === "ar" ? "جاري الإرسال..." : "Sending..."}
+              {translations("sending")}
             </>
           ) : (
             translations("form.send")

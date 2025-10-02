@@ -56,7 +56,7 @@ const XIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const pages = [
   { name: "main", href: "/" },
-  { name: "blog", href: "/blog" },
+  { name: "blog", href: "/blogs" },
   { name: "about-us", href: "/about-us" },
   { name: "term-and-condition", href: "/term-and-condition" },
   { name: "contact-us", href: "/contact-us" },
@@ -73,7 +73,7 @@ export default function Header() {
       <header className="bg-bg-gradient text-base-content">
         {/* Top Section */}
 
-        <div className="flex flex-col w-full gap-3 px-3 xl:px-16 mt-2 ">
+        <div className="flex flex-col w-full gap-3 px-3 xl:px-16  mt-2 ">
           {/* Header Slides Section */}
           <div className="w-full ">
             <Swiper
@@ -233,7 +233,7 @@ const HeaderActions = ({}: { primary?: boolean }) => {
         />
         <Button
           size="md"
-          variant="outline"
+          variant="primary"
           className=" hidden xl:flex flex-grow sm:flex-grow-0"
         >
           {"start-now"}

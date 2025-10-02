@@ -10,7 +10,7 @@ const options: (t: (tr: string) => string) => {
   value: string;
   label: string;
 }[] = (t) => [
-  { value: "live", label: "مباشر" },
+  { value: "live", label: "direct" },
   { value: "today", label: t("day") },
   { value: "1m", label: t("month") },
   { value: "3m", label: `${"3" + " " + t("months")}` },
@@ -35,7 +35,7 @@ const FirstSlide = () => {
   const t = useTranslations();
 
   return (
-    <div className="flex flex-col gap-3 lg:gap-4">
+    <div className="flex flex-col gap-3 lg:gap-4 overflow-hidden">
       {/* Top controls section */}
       {/* Filters: show as slider/collapse on small screens */}
 

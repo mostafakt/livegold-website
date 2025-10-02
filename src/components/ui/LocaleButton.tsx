@@ -1,7 +1,8 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import IconButton from "./IconButton";
+import { useLocale } from "next-intl";
 import Cookies from "js-cookie";
+
 export function setLocaleCookie(locale: string) {
   Cookies.set("NEXT_LOCALE", locale, {
     path: "/",
@@ -16,28 +17,34 @@ const LocaleButton = () => {
   const pathname = usePathname();
   const search = useSearchParams()?.toString() ?? "";
 
-  function switchTo(newLocale: string) {
-    // update cookie immediately
-    // setLocaleCookie(newLocale);
+  // Use next-intl's useLocale hook to get current locale from URL
+  const currentLocale = useLocale();
 
-    // replace/insert first segment with newLocale
-    const newPath = pathname.replace(/^\/[^\/]+/, `/${newLocale}`);
+  function switchTo(newLocale: string) {
+    // Update cookie BEFORE navigation
+    setLocaleCookie(newLocale);
+
+    // Replace first segment with newLocale
+    const segments = pathname.split("/");
+    segments[1] = newLocale; // Replace locale segment
+    const newPath = segments.join("/");
+
     const url = search ? `${newPath}?${search}` : newPath;
+
+    // Use router.push to navigate
     router.push(url);
+    router.refresh(); // Force refresh to re-render with new locale
   }
-  const currentLocal = Cookies.get("NEXT_LOCALE") || "ar";
+
   return (
-    <IconButton
-      icon={
-        <div className="h-10 w-10 text-secondary-dark   lg:text-primary rounded-full flex items-center justify-center">
-          {currentLocal.toUpperCase()}
-        </div>
-      }
-      ariaLabel="locale"
-      variant="ghost"
-      size="md"
-      onClick={() => switchTo(currentLocal == "ar" ? "en" : "ar")}
-    />
+    <div
+      onClick={() => switchTo(currentLocale === "ar" ? "en" : "ar")}
+      className="flex p-1  h-full max-h-11 hover:bg-[#f9f0df] items-center justify-center cursor-pointer  border-2 border-primary  rounded-lg"
+    >
+      <div className="h-10 w-10 text-secondary-dark lg:text-primary rounded-full flex items-center justify-center">
+        {currentLocale.toUpperCase()}
+      </div>
+    </div>
   );
 };
 

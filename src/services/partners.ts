@@ -16,7 +16,7 @@ interface IPartnersRes {
 }
 
 export async function getPartners(): Promise<IPartnersRes> {
-  const res = await apiFetch("/v1/partners?page=0", "partners", {
+  const res = await apiFetch("/v1/partners?page=0&pageSize=10&totalPages=10", "partners", {
     method: "GET",
     auth: false,
   });

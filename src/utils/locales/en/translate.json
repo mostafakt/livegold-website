@@ -252,6 +252,7 @@
   },
   "contact": {
     "title": "Contact Us",
+    "home": "Home",
     "subtitle": "We recognize the importance of staying updated with rapid changes in financial markets",
     "discover": "Discover the latest gold prices moment by moment",
     "description": "Live Gold is the ideal choice for providing accurate and instant information about gold prices in Saudi Riyal, making it easier for traders and investors in the Kingdom to follow the local market. We also provide gold prices in dollars to follow the global market.",
@@ -328,6 +329,7 @@
   "show-more": "Show More",
   "show-less": "Show Less",
   "public-blogs": "Public Blogs",
+  "blogs": "Blogs",
   "": "",
   "": ""
 }

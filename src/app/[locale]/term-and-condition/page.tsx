@@ -7,7 +7,7 @@ import { getTranslations } from "next-intl/server";
 export async function generateMetadata({
   params: { locale },
 }: {
-  params: { locale: string };
+  params: { locale: "ar" | "en" };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "TermAndCondition" });
   const data = await getTermAndConditionData();
@@ -33,7 +33,7 @@ export async function generateMetadata({
 export default async function TermAndConditionPage({
   params: { locale },
 }: {
-  params: { locale: string };
+  params: { locale: "ar" | "en" };
 }) {
   const data = await getTermAndConditionData();
 
