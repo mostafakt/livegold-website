@@ -251,7 +251,9 @@ const HeaderActions = ({}: { primary?: boolean }) => {
               {"start-now"}
             </Button>
           </div>
-          <LocaleButton />
+          <div className="block lg:hidden">
+            <LocaleButton />
+          </div>
         </div>
       </div>
       <div className="hidden lg:block">
