@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getFaqs } from "@/services/faq";
 
-import { getLocalizedData } from "@/utils/helpers";
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +10,7 @@ import {
 } from "@/components/ui/Accordion";
 import Breadcrumb from "@/components/ui/BreadCamp";
 import { MdQuestionAnswer, MdQuestionMark } from "react-icons/md";
+import { ManageLocale } from "@/utils/helpers";
 
 interface PageProps {
   params: {
@@ -108,7 +108,7 @@ export default async function FaqsPage({ params }: PageProps) {
                       </span>
 
                       <span className="flex-1 leading-snug">
-                        {getLocalizedData(faq.question, locale)}
+                        {ManageLocale.getLocalizedData(faq.question, locale)}
                       </span>
                     </div>
                   </AccordionTrigger>
@@ -118,7 +118,9 @@ export default async function FaqsPage({ params }: PageProps) {
                       <MdQuestionAnswer className="text-primary" />
                     </span>
 
-                    <span>{getLocalizedData(faq.answer, locale)}</span>
+                    <span>
+                      {ManageLocale.getLocalizedData(faq.answer, locale)}
+                    </span>
 
                     {/* Soft divider */}
                     {/* <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-neutral-200 to-transparent" /> */}

@@ -1,6 +1,7 @@
 import BlogsContent from "@/components/blogs/BlogsContent";
 import Breadcrumb from "@/components/ui/BreadCamp";
 import { getBlogs } from "@/services/blogs";
+import { ManageLocale } from "@/utils/helpers";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 export async function generateMetadata({
@@ -22,6 +23,7 @@ export async function generateMetadata({
 }
 const Page = async ({ params }: { params: { locale: "ar" | "en" } }) => {
   const locale = params.locale;
+  ManageLocale.setLocal(locale);
   const t = await getTranslations({ locale, namespace: "" });
   const blogs = await getBlogs();
   const breadcrumbItems = [
