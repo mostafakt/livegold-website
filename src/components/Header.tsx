@@ -196,7 +196,7 @@ export default function Header() {
           </button>
         </div>
         <div className="flex flex-col  ">
-          <div className="flex w-full items-center justify-center !mb-6">
+          <div className="flex w-full items-center justify-center !mb-6 px-4">
             <HeaderActions />
           </div>
           {pages.map((page) => {
