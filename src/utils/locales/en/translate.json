@@ -226,6 +226,28 @@
     "videoNotSupported": "Your browser does not support the video tag."
   },
 
+  "Faq": {
+    "meta": {
+      "title": "Faqs - Live Gold",
+      "description": "Explore the Live Gold FAQ section and find answers to the most common questions about tracking gold prices, using the platform, and the services offered."
+    },
+    "breadcrumb": {
+      "home": "Home"
+    },
+    "title": "FAQs",
+    "hero": {
+      "subtitle": "Everything you need to know about Live Gold and its services for real-time gold price tracking",
+      "appPreview": "Live Gold App - FAQ Section"
+    },
+    "cta": {
+      "title": "Start Your Gold Trading Journey Today",
+      "description": "Join thousands of satisfied users who trust Live Gold for accurate market information",
+      "getStarted": "Get Started",
+      "learnMore": "Learn More"
+    },
+    "videoNotSupported": "Your browser does not support the video tag."
+  },
+
   "start-now": "Start Now",
   "about-us": "About Us",
   "contact-us": "Contact Us",

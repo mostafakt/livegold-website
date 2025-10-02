@@ -175,13 +175,15 @@ export default function Header() {
       <div
         onClick={() => setIsDrawerOpen(false)}
         className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity xl:hidden ${
-          isDrawerOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          isDrawerOpen
+            ? " opacity-100 block "
+            : " opacity-0 pointer-events-none hidden "
         }`}
       />
       {/* Drawer Panel */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-bg-nav z-50 transform transition-transform duration-300 ease-in-out xl:hidden ${
-          isDrawerOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 rtl:right-0 ltr:left-0 h-full w-64 bg-primary-300 z-50 transform transition-transform duration-300 ease-in-out xl:hidden ${
+          isDrawerOpen ? "translate-x-0 block " : "translate-x-full hidden "
         }`}
       >
         <div className="flex justify-end p-4">
@@ -200,8 +202,9 @@ export default function Header() {
           {pages.map((page) => {
             const isActive =
               page.href === "/"
-                ? pathname === page.href
-                : pathname.startsWith(page.href);
+                ? pathname === `/ar` || pathname === `/en`
+                : pathname.startsWith(`/ar${page.href}`) ||
+                  pathname.startsWith(`/en${page.href}`);
             return (
               <Link
                 href={page.href}
@@ -210,7 +213,7 @@ export default function Header() {
                 className={`py-3 px-2 rounded-md ${isActive ? "bg-white/10" : ""}`}
               >
                 <span
-                  className={`${isActive ? "text-white font-bold" : "text-gray-200 font-normal"} text-xl`}
+                  className={`${isActive ? "text-primary-500 font-bold" : "text-secondary-dark font-normal"} text-xl`}
                 >
                   {t(page.name)}
                 </span>
@@ -231,22 +234,29 @@ const HeaderActions = ({}: { primary?: boolean }) => {
           className="xl:!min-w-60 !w-full !max-w-96 "
           icon={<MdOutlineSearch className=" cursor-pointer text-primary" />}
         />
-        <Button
-          size="md"
-          variant="primary"
-          className=" hidden xl:flex flex-grow sm:flex-grow-0"
-        >
-          {"start-now"}
-        </Button>{" "}
-        <Button
-          size="md"
-          variant="ghost"
-          className=" flex xl:hidden flex-grow sm:flex-grow-0"
-        >
-          {"start-now"}
-        </Button>
+        <div className="flex gap-2 justify-between w-full">
+          <div>
+            <Button
+              size="md"
+              variant="primary"
+              className=" hidden xl:flex flex-grow sm:flex-grow-0"
+            >
+              {"start-now"}
+            </Button>{" "}
+            <Button
+              size="md"
+              variant="primary"
+              className=" flex xl:hidden flex-grow sm:flex-grow-0"
+            >
+              {"start-now"}
+            </Button>
+          </div>
+          <LocaleButton />
+        </div>
       </div>
-      <LocaleButton />
+      <div className="hidden lg:block">
+        <LocaleButton />
+      </div>
     </div>
   );
 };

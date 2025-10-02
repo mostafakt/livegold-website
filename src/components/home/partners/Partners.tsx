@@ -15,7 +15,7 @@ const Partners = async ({ locale }: { locale: "ar" | "en" }) => {
       {/* Show carousel on small screens, grid on md+ */}
       <div className="block xl:hidden w-full">
         <EmblaCarousel
-          breakpoints={{ md: 3, base: 1 }}
+          breakpoints={{ md: 4,  sm: 3, base: 1 }}
           slides={partners?.results?.map((p, idx) => (
             <PartnerLogo key={idx} image={p.logo} url={p.url} />
           ))}

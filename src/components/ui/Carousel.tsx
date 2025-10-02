@@ -234,7 +234,7 @@ export default function EmblaCarousel({
 
       {/* Dots (based on embla snap list) */}
       {!hideDots && (
-        <div className="flex items-center justify-center gap-3 mt-5">
+        <div className="hidden md:flex items-center justify-center gap-3 mt-5">
           {snaps.map((_, i) => {
             const isActive = selected === i;
             return (

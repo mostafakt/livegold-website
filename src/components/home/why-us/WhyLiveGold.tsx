@@ -9,13 +9,18 @@ const WhyLiveGold = () => {
   return (
     <div className="w-full mb-24 relative overflow-visible lg:overflow-hidden py-8 px-4">
       <div className="mx-auto h-auto relative flex w-fit items-center justify-center bg-cover bg-center border-4 md:border-8 border-orange-400/40 rounded-3xl md:rounded-3xl">
-        <div className="left-1/2 z-10 -translate-x-1/2 -top-6 absolute text-center justify-start text-neutral-800 text-2xl md:text-4xl font-semibold">
+        <div className="left-1/2 z-10 -translate-x-1/2 hidden md:flex -top-6 absolute text-center justify-start  text-neutral-800 text-lg md:text-2xl  lg:text-4xl font-semibold">
           {t("why.heading")}
         </div>
 
-        <div className="w-3/5 md:w-4/5 h-28 left-1/2 -translate-x-1/2 -top-12 absolute bg-white opacity-100 blur-2xl rounded-full" />
+        <div className="w-3/5 md:w-4/5 h-28 left-1/2 -translate-x-1/2 -top-12 absolute hidden md:block bg-white opacity-100 blur-2xl rounded-full" />
         <div className="lg:bg-[url('/images/homepage/why-us-bg.png')] bg-cover bg-center flex p-6 md:p-10 overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
+            <div className="  z-10 flex md:hidden flex-col  w-full items-center justify-center text-center   text-neutral-800 text-xl md:text-2xl  lg:text-4xl font-semibold">
+              {t("why.heading")}
+              <div className="w-24 h-1 bg-primary-gradient mx-auto rounded-full mt-6"></div>
+            </div>
+
             {/* Card 1 */}
             <Card
               imageSrc="/images/homepage/WHY-LIVE.png"
