@@ -54,7 +54,7 @@ const XIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const pages = [
+export const pages = [
   { name: "main", href: "/" },
   { name: "blog", href: "/blogs" },
   { name: "about-us", href: "/about-us" },
@@ -70,10 +70,10 @@ export default function Header() {
 
   return (
     <>
-      <header className="bg-bg-gradient text-base-content">
+      <header className="bg-bg-gradient text-base-content flex justify-center  px-3 xl:px-16">
         {/* Top Section */}
 
-        <div className="flex flex-col w-full gap-3 px-3 xl:px-16  mt-2 ">
+        <div className="flex flex-col w-full max-w-360 gap-3  mt-2 ">
           {/* Header Slides Section */}
           <div className="w-full ">
             <Swiper
@@ -196,7 +196,7 @@ export default function Header() {
           </button>
         </div>
         <div className="flex flex-col  ">
-          <div className="flex w-full items-center justify-center !mb-6 px-4">
+          <div className="flex w-full items-center justify-center !mb-6">
             <HeaderActions />
           </div>
           {pages.map((page) => {

@@ -24,10 +24,10 @@ export default async function ContactUsClient({
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center  pt-10 lg:pt-24 pb-16">
-      <div className="   px-3 lg:px-16  2xl:px-24 w-full  ">
+    <div className="min-h-screen flex flex-col  items-center  pt-4 lg:pt-8 pb-16 max-w-360 w-full ">
+      <div className="  w-full  ">
         {/* Breadcrumb */}
-        <div className="mb-8">
+        <div className="mb-10 w-full">
           <Breadcrumb items={breadcrumbItems} />
         </div>
 

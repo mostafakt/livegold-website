@@ -42,7 +42,7 @@ const LocaleButton = () => {
       className="flex p-1  h-full max-h-11 hover:bg-[#f9f0df] items-center justify-center cursor-pointer  border-2 border-primary  rounded-lg"
     >
       <div className="h-10 w-10 text-secondary-dark lg:text-primary rounded-full flex items-center justify-center">
-        {currentLocale.toUpperCase()}
+        {currentLocale.toUpperCase() == "AR" ? "EN" : "AR"}
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ const Reviews = async ({ locale }: { locale: "ar" | "en" }) => {
   const reviews = await getTestimonials();
   const t = await getTranslations({ locale });
   return (
-    <div className=" p-3 lg:p-16 flex flex-col items-center gap-10 ">
+    <div className=" p-3 lg:p-16 flex flex-col items-center gap-10 w-full max-w-360 ">
       <div className="text-center justify-start text-primary text-4xl font-bold  ">
         {t("testimonials")}
       </div>

@@ -32,5 +32,9 @@ export default async function ContactUsPage({ params }: PageProps) {
   const { locale } = params;
   const data = await getContactUsData(locale);
 
-  return <ContactUsClient data={data} locale={locale} />;
+  return (
+    <div className="flex justify-center w-full  px-3 lg:px-16  2xl:px-24 ">
+      <ContactUsClient data={data} locale={locale} />;
+    </div>
+  );
 }

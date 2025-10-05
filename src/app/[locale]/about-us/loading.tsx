@@ -1,53 +1,57 @@
-export default function Loading() {
+export default function AboutUsLoading() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-primary-bg">
       {/* Hero Section Skeleton */}
-      <section className="bg-primary-gradient py-16">
-        <div className="container mx-auto px-4">
-          <div className="h-4 w-48 bg-white/30 rounded mb-4"></div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-8">
-            <div className="text-white">
-              <div className="h-12 bg-white/30 rounded mb-6 w-3/4"></div>
-              <div className="h-6 bg-white/30 rounded w-full mb-2"></div>
-              <div className="h-6 bg-white/30 rounded w-5/6"></div>
-
-              {/* Stats Skeleton */}
-              <div className="grid grid-cols-2 gap-6 mt-12">
-                {[...Array(4)].map((_, i) => (
-                  <div key={i} className="text-center">
-                    <div className="h-8 bg-white/30 rounded mb-2 w-16 mx-auto"></div>
-                    <div className="h-4 bg-white/30 rounded w-20 mx-auto"></div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Hero Image Skeleton */}
-            <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-8">
-              <div className="bg-white rounded-2xl p-6">
-                <div className="aspect-video bg-gray-300 rounded-xl animate-pulse"></div>
-              </div>
+      <section className="bg-white py-12 lg:py-16">
+        <div className="max-w-360 mx-auto px-4">
+          <div className="text-center">
+            {/* Title Skeleton */}
+            <div className="h-8 bg-neutral-300 rounded-lg w-48 mx-auto mb-6 animate-pulse"></div>
+            
+            {/* Divider Skeleton */}
+            <div className="w-20 h-1 bg-neutral-300 rounded-full mx-auto mb-8 animate-pulse"></div>
+            
+            {/* Content Skeleton */}
+            <div className="space-y-4">
+              <div className="h-4 bg-neutral-300 rounded w-full animate-pulse"></div>
+              <div className="h-4 bg-neutral-300 rounded w-full animate-pulse"></div>
+              <div className="h-4 bg-neutral-300 rounded w-5/6 mx-auto animate-pulse"></div>
+              <div className="h-4 bg-neutral-300 rounded w-4/6 mx-auto animate-pulse"></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Content Skeleton */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="h-10 bg-gray-300 rounded w-64 mx-auto mb-6"></div>
-            <div className="h-6 bg-gray-300 rounded w-96 max-w-full mx-auto"></div>
+      {/* Stats Section Skeleton */}
+      <section className="py-16 lg:py-20 bg-primary-400">
+        <div className="max-w-360 mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((item) => (
+              <div key={item} className="bg-white rounded-xl p-8 text-center shadow-drop">
+                <div className="h-12 bg-neutral-300 rounded-lg w-32 mx-auto mb-4 animate-pulse"></div>
+                <div className="h-4 bg-neutral-300 rounded w-24 mx-auto animate-pulse"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section Skeleton */}
+      <section className="py-16 lg:py-20 bg-white">
+        <div className="max-w-360 mx-auto px-4">
+          {/* Section Title Skeleton */}
+          <div className="text-center mb-12">
+            <div className="h-8 bg-neutral-300 rounded-lg w-64 mx-auto mb-4 animate-pulse"></div>
           </div>
 
-          {/* Features Grid Skeleton */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="bg-white rounded-2xl p-8 shadow-drop">
-                <div className="h-12 w-12 bg-gray-300 rounded-lg mb-4"></div>
-                <div className="h-6 bg-gray-300 rounded w-3/4 mb-3"></div>
-                <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
-                <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[1, 2, 3, 4].map((item) => (
+              <div key={item} className="flex items-start space-x-4 animate-pulse">
+                <div className="flex-shrink-0 w-12 h-12 bg-neutral-300 rounded-full"></div>
+                <div className="flex-1">
+                  <div className="h-6 bg-neutral-300 rounded w-32 mb-2"></div>
+                  <div className="h-4 bg-neutral-300 rounded w-full"></div>
+                </div>
               </div>
             ))}
           </div>

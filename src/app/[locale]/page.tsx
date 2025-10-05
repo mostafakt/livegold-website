@@ -30,7 +30,7 @@ export default async function Home({
   const locale = params.locale;
 
   return (
-    <div className="bg-base-100 text-base-content bg-primary-bg ">
+    <div className="bg-base-100 text-base-content bg-primary-bg  flex flex-col w-full items-center justify-center">
       <HeroSection />
       <WhyLiveGold />
       {/* <BannerSection />

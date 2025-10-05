@@ -7,7 +7,7 @@ const Partners = async ({ locale }: { locale: "ar" | "en" }) => {
   const partners = await getPartners();
   const t = await getTranslations({ locale });
   return (
-    <div className=" flex flex-col items-center justify-center gap-10  p-3 lg:px-16  2xl:px-24">
+    <div className=" flex flex-col items-center justify-center gap-10  w-full max-w-360 p-3 lg:px-16  2xl:px-24">
       <div className="text-center justify-start text-primary text-4xl font-bold">
         {t("partners")}
       </div>

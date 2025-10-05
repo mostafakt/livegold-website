@@ -251,6 +251,7 @@
   "start-now": "Start Now",
   "about-us": "About Us",
   "contact-us": "Contact Us",
+  "bogs-subtitle": "Latest news and articles about gold markets and investment",
 
   "TermAndCondition": {
     "meta": {
@@ -304,6 +305,7 @@
       "privacy-policy": "Privacy Policy"
     },
     "title": "Privacy Policy",
+    "subtitle": "Privacy policy and personal data protection",
     "additional-info": {
       "title": "Additional Information",
       "description": "For inquiries about our privacy policy, please contact our support team."

@@ -48,7 +48,7 @@ export default async function FaqsPage({ params }: PageProps) {
   ];
   return (
     <>
-      <div className="min-h-screen bg-primary-bg pt-10 md:pt-24 pb-16">
+      <div className="min-h-screen bg-primary-bg pt-4 md:pt-8 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
           <div className="mb-8">

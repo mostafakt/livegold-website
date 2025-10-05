@@ -43,8 +43,8 @@ export default async function RootLayout({
           <LocalizationWrapper key={locale} messages={messages} locale={locale}>
             <Header />
 
-            <main className="flex-1 bg-neutral-200  ">{children}</main>
-            <Footer />
+            <main className="flex-1  bg-primary-bg  ">{children}</main>
+            <Footer locale={locale} />
           </LocalizationWrapper>
           {/* </NextIntlClientProvider> */}
         </Providers>

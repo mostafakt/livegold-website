@@ -1,18 +1,17 @@
-// app/components/TermAndConditionServer.tsx
-// Server Component — do NOT include "use client"
 import React from "react";
 import Image from "@/components/ui/Image";
 import Breadcrumb from "../ui/BreadCamp";
 import { ITermAndCondition } from "@/types/term-and-condition";
 import { ManageLocale } from "@/utils/helpers";
 import styles from "./term.module.css";
+import { getTranslations } from "next-intl/server";
 
 interface TermAndConditionServerProps {
   data?: ITermAndCondition;
   locale: "ar" | "en";
 }
 
-export default function TermAndConditionServer({
+export default async function TermAndConditionServer({
   data,
   locale,
 }: TermAndConditionServerProps) {
@@ -30,12 +29,15 @@ export default function TermAndConditionServer({
     };
     return fallbacks[key] ?? key;
   };
+  const translations = await getTranslations({
+    locale,
+    namespace: "",
+  });
 
   const title =
     ManageLocale.getLocalizedData(data?.title, locale) || t("title");
   const content = ManageLocale.getLocalizedData(data?.content, locale) || "";
 
-  // server-side deterministic date (no hydration mismatch)
   const lastUpdated = new Date().toLocaleDateString(locale, {
     year: "numeric",
     month: "long",
@@ -43,33 +45,33 @@ export default function TermAndConditionServer({
   });
 
   const breadcrumbItems = [
-    { label: t("breadcrumb.home"), href: "/" },
+    { label: translations("home"), href: "/" },
     { label: title, href: "/term-and-condition" },
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen  px-3 lg:px-16  2xl:px-24 ">
       {/* Header Section */}
-      <section className="text-white/90 pt-10 lg:pt-24">
-        <div className="w-full px-3 lg:px-16 2xl:px-24">
-          <div>
+      <section className="text-white/90 pt-4 lg:pt-8 flex flex-col items-center">
+        <div className="w-full  max-w-360">
+          <div className="mb-10">
             <Breadcrumb items={breadcrumbItems} />
           </div>
 
-          <div className="text-center mt-8 w-full flex flex-col items-center justify-center">
-            <h1 className="text-4xl font-bold text-neutral-900 mb-4">
+          <div className="text-center mb-16 ">
+            <h1 className="text-4xl font-bold text-neutral-900 mb-4 ">
               {title}
             </h1>
-            <p className="text-neutral-850 text-lg max-w-2xl mx-auto">
-              {t("subtitle")}
+            <p className="text-xl text-neutral-700 max-w-3xl mx-auto leading-relaxed">
+              {translations("TermAndCondition.subtitle")}
             </p>
-            <div className="w-24 h-1 bg-primary-gradient mx-auto rounded-full mt-6" />
+            <div className="w-24 h-1 bg-primary-gradient mx-auto rounded-full mt-6"></div>
           </div>
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="py-16">
+      <section className="pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {data?.imageUrl && (
@@ -125,17 +127,17 @@ export default function TermAndConditionServer({
             <div className="mt-12 text-center">
               <div className="bg-card-bg-gradient rounded-2xl p-8 border border-primary-200">
                 <h3 className="text-2xl font-bold text-neutral-900 mb-4">
-                  {t("cta.title")}
+                  {translations("TermAndCondition.cta.title")}
                 </h3>
                 <p className="text-neutral-700 mb-6 max-w-2xl mx-auto">
-                  {t("cta.description")}
+                  {translations("TermAndCondition.cta.description")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200">
-                    {t("cta.contact")}
+                    {translations("TermAndCondition.cta.contact")}
                   </button>
                   <button className="border border-primary-500 text-primary-500 hover:bg-primary-50 px-8 py-3 rounded-lg font-medium transition-colors duration-200">
-                    {t("cta.learnMore")}
+                    {translations("TermAndCondition.cta.learnMore")}
                   </button>
                 </div>
               </div>

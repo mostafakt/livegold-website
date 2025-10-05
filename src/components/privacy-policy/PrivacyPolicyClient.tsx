@@ -17,14 +17,14 @@ export default function PrivacyPolicyClient({
 }: PrivacyPolicyClientProps) {
   const [mounted, setMounted] = useState(false);
   const t = useTranslations("privacy_policy");
-  
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!mounted) {
     return (
-      <div className="min-h-screen  bg-primary-bg pt-24 pb-16">
+      <div className="min-h-screen  bg-primary-bg pt-8 pb-16">
         <div className="container mx-auto px-4">
           <div className="animate-pulse">
             <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
@@ -41,22 +41,30 @@ export default function PrivacyPolicyClient({
 
   const breadcrumbItems = [
     { label: t("breadcrumb.home"), href: "/" },
-    { label: data.title?.[locale] || t("breadcrumb.privacy-policy"), href: "#" },
-  ]; 
+    {
+      label: data.title?.[locale] || t("breadcrumb.privacy-policy"),
+      href: "#",
+    },
+  ];
   return (
-    <div className="min-h-screen bg-primary-bg flex flex-col items-center w-full py-10 lg:py-24 ">
-      <div className="w-full   px-3 lg:px-16  2xl:px-24 ">
+    <div className="min-h-screen bg-primary-bg flex flex-col items-center w-full py-4 lg:py-8 ">
+      <div className="w-full   px-3 lg:px-16  2xl:px-24 flex flex-col items-center ">
         {/* Breadcrumb */}
-        <div className="mb-8 w-full">
+        <div className="mb-10 w-full max-w-360 ">
           <Breadcrumb items={breadcrumbItems} />
         </div>
 
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-neutral-900   ">
-            {data.title?.[locale] || t("title")}
-          </h1>
-          <div className="w-24 h-1 bg-primary-gradient mx-auto rounded-full mt-6"></div>
+          <div className="text-center  ">
+            <h1 className="text-4xl font-bold text-neutral-900 mb-4 ">
+              {data.title?.[locale] || t("title")}
+            </h1>
+            <p className="text-xl text-neutral-700 max-w-3xl mx-auto leading-relaxed">
+              {t("subtitle")}
+            </p>
+            <div className="w-24 h-1 bg-primary-gradient mx-auto rounded-full mt-6"></div>
+          </div>
         </div>
 
         {/* Content Section */}

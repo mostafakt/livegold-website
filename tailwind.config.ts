@@ -10,10 +10,17 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        "3xl": "1920px", // Full HD and up
+        "4xl": "2560px", // 2K / WQHD
+        "5xl": "3840px", // 4K screens
+      },
+
       spacing: {
         "200": "800px",
         "75": "300px",
         "112": "450px",
+        "360": "90rem",
       },
       colors: {
         "gray-text": "#737373",
@@ -104,6 +111,7 @@ module.exports = {
       },
 
       animation: {
+        fadeUp: "fadeUp 1.8s ease-out forwards", // runs once
         "fade-in": "fade-in 1s ease forwards",
         "fade-up": "fade-up 1s ease forwards",
         marquee: "marquee var(--duration) infinite linear",
@@ -114,6 +122,10 @@ module.exports = {
       },
 
       keyframes: {
+        fadeUp: {
+          "0%": { opacity: 0, transform: "translateY(24px)" },
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
         "fade-in": {
           "0%": { opacity: "0", transform: "translateY(-10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
