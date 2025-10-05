@@ -55,7 +55,7 @@ export default function AboutUsClient({ data, locale }: AboutUsClientProps) {
             </div>
             <div className="prose prose-lg max-w-none text-neutral-700 leading-relaxed font-sans text-justify">
               <div
-                className="space-y-4"
+                className="space-y-4 wrapper "
                 dangerouslySetInnerHTML={{
                   __html: data.content[locale as keyof typeof data.content],
                 }}

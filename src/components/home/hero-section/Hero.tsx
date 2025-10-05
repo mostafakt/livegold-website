@@ -44,7 +44,7 @@ const HeroOverlay = ({
       <div className="text-center max-w-4xl mx-auto px-4 lg:px-8 xl:px-12 2xl:max-w-6xl flex flex-col items-start justify-start ">
         <h1
           style={{ animationDelay: "720ms" }}
-          className="text-primary-500 text-lg w-full lg:w-3/4 text-center md:text-start lg:text-xl xl:text-2xl 2xl:text-3xl font-medium lg:font-semibold xl:font-bold mb-4  animate-fade-up lg:mb-6 !leading-8 lg:!leading-[60px] tracking-widest"
+          className="text-primary-500 text-lg w-full lg:w-3/4 text-center md:text-start lg:text-xl xl:text-2xl 2xl:text-3xl  font-bold lg:font-extrabold xl:font-extrabold mb-4  animate-fade-up lg:mb-6 !leading-8 lg:!leading-[60px] tracking-widest"
         >
           {title}
         </h1>

@@ -3,8 +3,7 @@
 import { IPrivacyPolicy } from "@/types/privacy-policy";
 import { useEffect, useState } from "react";
 import Breadcrumb from "@/components/ui/BreadCamp";
-import { useTranslations } from "next-intl";
-import styles from "./privacy.module.css";
+import { useTranslations } from "next-intl"; 
 
 interface PrivacyPolicyClientProps {
   data: IPrivacyPolicy;
@@ -71,7 +70,20 @@ export default function PrivacyPolicyClient({
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl text-black shadow-drop p-8 md:p-12">
             <div
-              className={` ${styles.wrapper}  `}
+              className={` w-full !max-w-full
+ prose prose-sm md:prose-base lg:prose-lg xl:prose-xl 
+    text-secondary-dark font-normal leading-[1.6] 
+    prose-p:text-secondary-dark prose-p:leading-[1.7] prose-p:mb-4  prose-p:text-base 
+    prose-strong:!text-red-50 prose-strong:font-extrabold prose-strong:block prose-strong:mb-1.5 prose-strong:text-[0.875em] md:prose-strong:text-[0.925em] lg:prose-strong:text-base lg:prose-strong:text-neutral-900 lg:prose-strong:mb-1 xl:prose-strong:mb-1
+      prose-br:!hidden      prose-br:!h-1
+    lg:prose-h2:text-primary prose-h2:text-primary lg:prose-h2:font-bold lg:prose-h2:mt-4 prose-h2:!mb-1 lg:prose-h2:text-xl
+     lg:prose-h1:font-bold lg:prose-h1:mt-3 lg:prose-h1:mb-1.5 lg:prose-h1:text-[1.4rem]
+     lg:prose-p:leading-[1.5] lg:prose-p:mb-1
+    lg:prose-hr:mt-2 lg:prose-hr:border-neutral-200
+    lg:prose-ul:list-disc lg:prose-ul:pl-6 lg:prose-ul:mb-1
+     lg:prose-li:mb-0.5
+    xl:prose-p:leading-[1.6]
+`}
               dangerouslySetInnerHTML={{
                 __html: data.content?.[locale] || "<p>No content available</p>",
               }}

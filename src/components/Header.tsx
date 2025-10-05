@@ -8,11 +8,7 @@ import { Button, Input } from "./ui";
 import Image from "@/components/ui/Image";
 import { useTranslations } from "next-intl";
 import HeaderSlide from "./ui/HeaderSlide";
-// @ts-ignore
-import "swiper/css";
-// @ts-ignore
-import "swiper/css/free-mode";
-import { FreeMode } from "swiper/modules";
+import { FreeMode, Autoplay } from "swiper/modules";
 import { MdOutlineSearch } from "react-icons/md";
 import LocaleButton from "./ui/LocaleButton";
 // Icons for the mobile drawer
@@ -77,11 +73,14 @@ export default function Header() {
           {/* Header Slides Section */}
           <div className="w-full ">
             <Swiper
-              modules={[FreeMode]}
+              modules={[FreeMode, Autoplay]}
               spaceBetween={16}
               slidesPerView="auto"
               freeMode={true}
               grabCursor={true}
+              loop={true}
+              speed={2000}
+              autoplay={{ delay: 2000, disableOnInteraction: false }}
             >
               {Array.from({ length: 9 }).map((_, i) => (
                 <SwiperSlide key={i} className=" w-56 max-w-fit ">
@@ -196,7 +195,7 @@ export default function Header() {
           </button>
         </div>
         <div className="flex flex-col  ">
-          <div className="flex w-full items-center justify-center !mb-6 !px-1 ">
+          <div className="flex w-full items-center justify-center !mb-6 px-1">
             <HeaderActions />
           </div>
           {pages.map((page) => {
@@ -213,7 +212,7 @@ export default function Header() {
                 className={`py-3 px-2 rounded-md ${isActive ? "bg-white/10" : ""}`}
               >
                 <span
-                  className={`${isActive ? "text-primary-500 font-bold" : "text-secondary-dark font-normal"} text-xl`}
+                  className={`${isActive ? "text-primary-500 font-bold" : "text-secondary-dark font-normal"} text-sm `}
                 >
                   {t(page.name)}
                 </span>

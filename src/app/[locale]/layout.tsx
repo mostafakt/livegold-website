@@ -1,5 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-ignore
+import "swiper/css";
+//@ts-ignore
+import "swiper/css/pagination";
+//@ts-ignore
+import "swiper/css/free-mode";
+
+//@ts-ignore
 import "./globals.css";
 import type { ReactNode } from "react";
 import Providers from "@/components/Providers";
@@ -38,16 +45,21 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-screen flex flex-col bg-base-300 text-base-content transition-colors duration-300  ">
-        <Providers>
-          {/* <NextIntlClientProvider key={locale} messages={messages}> */}
-          <LocalizationWrapper key={locale} messages={messages} locale={locale}>
-            <Header />
-
-            <main className="flex-1  bg-primary-bg  ">{children}</main>
-            <Footer locale={locale} />
-          </LocalizationWrapper>
-          {/* </NextIntlClientProvider> */}
-        </Providers>
+        <div id="ss">
+          <Providers>
+            {/* <NextIntlClientProvider key={locale} messages={messages}> */}
+            <LocalizationWrapper
+              key={locale}
+              messages={messages}
+              locale={locale}
+            >
+              <Header />
+              <main className="flex-1  bg-primary-bg  ">{children}</main>
+              <Footer locale={locale} />
+            </LocalizationWrapper>
+            {/* </NextIntlClientProvider> */}
+          </Providers>
+        </div>
       </body>
     </html>
   );

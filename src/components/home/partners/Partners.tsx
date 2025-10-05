@@ -1,7 +1,7 @@
-import EmblaCarousel from "../../ui/Carousel";
 import { getTranslations } from "next-intl/server";
 import { getPartners } from "@/services/partners";
 import PartnerLogo from "./PartnerLogo";
+import SwiperCarousel from "@/components/ui/SwiperCarousel";
 
 const Partners = async ({ locale }: { locale: "ar" | "en" }) => {
   const partners = await getPartners();
@@ -14,8 +14,11 @@ const Partners = async ({ locale }: { locale: "ar" | "en" }) => {
 
       {/* Show carousel on small screens, grid on md+ */}
       <div className="block xl:hidden w-full">
-        <EmblaCarousel
-          breakpoints={{ md: 4,  sm: 3, base: 1 }}
+        <SwiperCarousel
+          hideDots
+          autoScroll
+          autoScrollInterval={2000}
+          breakpoints={{ md: 4, sm: 3, base: 2 }}
           slides={partners?.results?.map((p, idx) => (
             <PartnerLogo key={idx} image={p.logo} url={p.url} />
           ))}

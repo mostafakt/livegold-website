@@ -125,3 +125,7 @@ body {
     }
   }
 }
+.prose-br br {
+  display: none;
+  height: 1rem;
+}

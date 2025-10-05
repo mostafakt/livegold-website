@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // tailwind.config.ts
 import defaultTheme from "tailwindcss/defaultTheme";
-
+import typography from "@tailwindcss/typography";
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -167,5 +168,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [typography],
 };

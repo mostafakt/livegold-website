@@ -3,7 +3,6 @@ import Image from "@/components/ui/Image";
 import Breadcrumb from "../ui/BreadCamp";
 import { ITermAndCondition } from "@/types/term-and-condition";
 import { ManageLocale } from "@/utils/helpers";
-import styles from "./term.module.css";
 import { getTranslations } from "next-intl/server";
 
 interface TermAndConditionServerProps {
@@ -104,14 +103,20 @@ export default async function TermAndConditionServer({
               <article
                 lang={locale}
                 dir={locale === "ar" ? "rtl" : "ltr"}
-                className={
-                  `  ${styles.wrapper} ` +
-                  "prose prose-lg max-w-none " +
-                  "prose-headings:!text-red-900 prose-h2:text-red-900 prose-headings:font-bold " +
-                  "prose-p:text-neutral-700 prose-p:leading-relaxed " +
-                  "prose-ul:text-neutral-700 prose-ol:text-neutral-700 prose-li:my-2 " +
-                  "prose-strong:text-primary-600 prose-a:text-primary-500 prose-a:no-underline hover:prose-a:underline"
-                }
+                className={` w-full !max-w-full *:w-full 
+ prose prose-sm md:prose-base lg:prose-lg xl:prose-xl 
+    text-secondary-dark font-normal leading-5
+    prose-p:text-secondary-dark prose-p:leading-[1.5] prose-p:mb-4  prose-p:text-base 
+    prose-strong:!text-red-50 prose-strong:font-extrabold prose-strong:block prose-strong:mb-1.5 prose-strong:text-[0.875em] md:prose-strong:text-[0.925em] lg:prose-strong:text-base lg:prose-strong:text-neutral-900 lg:prose-strong:mb-1 xl:prose-strong:mb-1
+      prose-br:!hidden      prose-br:!h-1
+    lg:prose-h2:text-primary prose-h2:text-primary lg:prose-h2:font-bold lg:prose-h2:mt-4  prose-h2:text-lg prose-h2:!mb-2 lg:prose-h2:text-xl
+     lg:prose-h1:font-bold lg:prose-h1:mt-3 lg:prose-h1:mb-1.5 lg:prose-h1:text-[1.4rem]
+     lg:prose-p:leading-[1.5]  lg:prose-p:mb-1
+    lg:prose-hr:mt-2 lg:prose-hr:border-neutral-200
+    lg:prose-ul:list-disc lg:prose-ul:pl-6 lg:prose-ul:mb-1
+     lg:prose-li:mb-0.5
+    xl:prose-p:leading-[1.6]
+`}
                 dangerouslySetInnerHTML={{ __html: content }}
               />
 

@@ -3,13 +3,11 @@
 import { IBlogRes, IBlogsRes } from "@/services/blogs";
 import { ManageLocale } from "@/utils/helpers";
 import { useTranslations } from "next-intl";
-import { FreeMode } from "swiper/modules";
-import { SwiperSlide, Swiper } from "swiper/react";
 import IconButton from "../ui/IconButton";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import BlogCard from "./BlogCard";
-
+import SwiperCarousel from "../ui/SwiperCarousel";
 const BlogsBody = ({
   blogs,
   blog,
@@ -32,9 +30,9 @@ const BlogsBody = ({
         }}
         className={`  flex w-full  h-75  items-center justify-center !max-h-75   bg-cover   bg-no-repeat   lg:!max-h-96 3xl:!max-h-96  overflow-hidden  `}
       >
-        <div className="  w-full h-full flex justify-center items-center bg-secondary-dark bg-opacity-45 ">
+        <div className="  px-3 xl:px-16 2xl:px-24  w-full h-full flex justify-center items-center bg-secondary-dark bg-opacity-45 ">
           {/* title */}
-          <div className="  z-30  text-center   flex  items-center  text-[#f8bf74] text-lg md:text-2xl  justify-center  font-bold w-full  ">
+          <div className="  z-30 text-center   flex  items-center  text-[#f8bf74] text-lg md:text-2xl  justify-center  font-bold w-full  ">
             {ManageLocale.getLocalizedData(blog.title, locale)}
           </div>{" "}
         </div>
@@ -46,7 +44,7 @@ const BlogsBody = ({
             <div className=" w-full mt-6  ">
               {/* description */}
               <div
-                className="w-full   text-secondary-dark text-start wrapper justify-start  text-xs  md:text-md lg:text-lg xl:text-xl font-normal"
+                className="w-full   text-secondary-dark text-start leading-9 prose-strong:text-primary prose-h2:text-primary prose-p:leading-6 lg:prose-p:leading-8  justify-start  text-xs  md:text-md lg:text-lg xl:text-xl font-normal"
                 dangerouslySetInnerHTML={{
                   __html: ManageLocale.getLocalizedData(blog.content, locale),
                 }}
@@ -73,28 +71,22 @@ const BlogsBody = ({
             {t("public-blogs")}
           </div>
           <div className="w-full mt-4 ">
-            <Swiper
-              modules={[FreeMode]}
-              spaceBetween={16}
-              slidesPerView="auto"
-              freeMode={true}
-              grabCursor={true}
-            >
-              {blogs?.results.map((t, idx) => (
-                <SwiperSlide
-                  key={idx}
-                  className=" max-w-full sm:w-96 sm:max-w-96 h-full  py-2 cursor-pointer "
-                >
+            <SwiperCarousel
+              breakpoints={{ base: 2, md: 3, lg: 4, "2xl": 5 }}
+              hideDots
+              slides={blogs?.results.map((t, idx) => (
+                <div key={idx} className="my-2">
                   <BlogCard
+                    key={idx}
                     content={t.content}
                     title={t.title}
                     image={t.image ?? "/images/homepage/hero/10.webp"}
                     id={t.id}
                     isSelected={t.id == blog.id}
                   />
-                </SwiperSlide>
+                </div>
               ))}
-            </Swiper>
+            ></SwiperCarousel>
           </div>
 
           <div className=" w-full  flex items-center justify-start mt-6 gap-6 ">
