@@ -34,7 +34,7 @@ const BlogsBody = ({
       >
         <div className="  w-full h-full flex justify-center items-center bg-secondary-dark bg-opacity-45 ">
           {/* title */}
-          <div className="  z-[999]  text-center   flex  items-center  text-[#f8bf74] text-lg md:text-2xl  justify-center  font-bold w-full  ">
+          <div className="  z-30  text-center   flex  items-center  text-[#f8bf74] text-lg md:text-2xl  justify-center  font-bold w-full  ">
             {ManageLocale.getLocalizedData(blog.title, locale)}
           </div>{" "}
         </div>
