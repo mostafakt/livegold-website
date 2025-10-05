@@ -40,7 +40,7 @@ const HeroOverlay = ({
   description: string;
 }) => {
   return (
-    <div className="absolute inset-0 z-50 flex items-center justify-center bg-secondary-dark bg-opacity-40">
+    <div className="absolute inset-0 z-10 flex items-center justify-center bg-secondary-dark bg-opacity-40">
       <div className="text-center max-w-4xl mx-auto px-4 lg:px-8 xl:px-12 2xl:max-w-6xl flex flex-col items-start justify-start ">
         <h1
           style={{ animationDelay: "720ms" }}
