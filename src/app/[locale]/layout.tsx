@@ -18,6 +18,7 @@ import { notFound } from "next/navigation";
 // import { NextIntlClientProvider } from "next-intl";
 import LocalizationWrapper from "@/components/LocalizationWrapper";
 import { ManageLocale } from "@/utils/helpers";
+import { fetchMetalPriceServer } from "@/services/metal-price";
 export const metadata = {
   title: "Live gold",
   description: "best gold e-commerce",
@@ -38,6 +39,7 @@ export default async function RootLayout({
   ManageLocale.setLocal(locale as "en" | "ar");
 
   const messages = await getMessages();
+  const headerData = await fetchMetalPriceServer();
   return (
     <html
       dir={locale == "ar" ? "rtl" : "ltr"}
@@ -53,7 +55,7 @@ export default async function RootLayout({
               messages={messages}
               locale={locale}
             >
-              <Header />
+              <Header data={headerData ?? undefined} />
               <main className="flex-1  bg-primary-bg  ">{children}</main>
               <Footer locale={locale} />
             </LocalizationWrapper>

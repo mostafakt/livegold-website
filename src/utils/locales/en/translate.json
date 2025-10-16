@@ -358,6 +358,18 @@
   "show-less": "Show Less",
   "public-blogs": "Public Blogs",
   "blogs": "Blogs",
+  "search-blogs": "Search Blogs",
+  "XAG": "Silver",
+  "XAU": "Gold",
+  "XPD": "Palladium",
+  "XPT": "Platinum",
+  "ALU": "Aluminum",
+  "NI": "Nickel",
+  "XCU": "Copper",
+  "ZNC": "Zinc",
+  "request-sent": "We received Your request",
+  "invalid-email": "Invalid Email",
+  "no-data": "No Registered Data",
   "": "",
   "": ""
 }

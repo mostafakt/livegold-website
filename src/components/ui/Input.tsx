@@ -58,7 +58,7 @@ export const Input = forwardRef<HTMLInputElement, TextInputProps>(
         )}
         <div
           className={clsx(
-            "  flex items-center relative justify-between gap-2.5 max-h-11 bg-white rounded-lg w-full px-4 py-4",
+            "  flex items-center  relative justify-between gap-2.5 max-h-11 bg-white rounded-lg w-full px-4 py-4",
             `${haveBorder ? " border border-neutral-600 " : ""}`,
             containerClassName
           )}

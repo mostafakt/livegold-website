@@ -17,7 +17,7 @@ const BlogsBody = ({
   blog: IBlogRes;
   locale: "ar" | "en";
 }) => {
-  const index = blogs.results.findIndex((obj) => obj.id === blog.id);
+  const index = blogs.results.findIndex((obj) => obj.id === blog?.id);
   const t = useTranslations();
   const router = useRouter();
 

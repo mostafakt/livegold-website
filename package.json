@@ -2,7 +2,7 @@
   "engines": {
     "node": ">=18"
   },
-  "name": "ecommerce-app",
+  "name": "livegold-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {

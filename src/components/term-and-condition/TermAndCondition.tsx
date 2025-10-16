@@ -4,6 +4,7 @@ import Breadcrumb from "../ui/BreadCamp";
 import { ITermAndCondition } from "@/types/term-and-condition";
 import { ManageLocale } from "@/utils/helpers";
 import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 
 interface TermAndConditionServerProps {
   data?: ITermAndCondition;
@@ -138,12 +139,16 @@ export default async function TermAndConditionServer({
                   {translations("TermAndCondition.cta.description")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200">
-                    {translations("TermAndCondition.cta.contact")}
-                  </button>
-                  <button className="border border-primary-500 text-primary-500 hover:bg-primary-50 px-8 py-3 rounded-lg font-medium transition-colors duration-200">
-                    {translations("TermAndCondition.cta.learnMore")}
-                  </button>
+                  <Link href="/contact-us">
+                    <button className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200">
+                      {translations("TermAndCondition.cta.contact")}
+                    </button>
+                  </Link>
+                  <Link href="/contact-us">
+                    <button className="border border-primary-500 text-primary-500 hover:bg-primary-50 px-8 py-3 rounded-lg font-medium transition-colors duration-200">
+                      {translations("TermAndCondition.cta.learnMore")}
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

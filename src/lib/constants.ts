@@ -1,7 +1,12 @@
 export const JWT_COOKIE_NAME = "jwt";
 export const DEFAULT_API_BASE = "/api";
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE ?? "";
-export const embeddedHtmlClassStyle=`
+export const METAL_PRICE_APIS = process.env.NEXT_PUBLIC_METAL_PRICE_APIS ?? "";
+export const METAL_PRICE_KEY = process.env.NEXT_PUBLIC_METAL_PRICE_KEY ?? "";
+export const DEFAULT_CURRENCY = process.env.NEXT_PUBLIC_DEFAULT_CURRENCY ?? "USD";
+export const DEFAULT_METAL = process.env.NEXT_PUBLIC_DEFAULT_METAL ?? "XAU";
+
+export const embeddedHtmlClassStyle = `
  prose prose-sm md:prose-base lg:prose-lg xl:prose-xl prose-rtl
     text-secondary-dark font-normal leading-[1.6] 
     prose-p:text-secondary-dark prose-p:leading-[1.7] prose-p:mb-4 prose-p:text-justify
@@ -14,4 +19,4 @@ export const embeddedHtmlClassStyle=`
     lg:prose-ul:list-disc lg:prose-ul:pl-6 lg:prose-ul:mb-1
     lg:prose-li:text-neutral-700 lg:prose-li:mb-0.5
     xl:prose-p:leading-[1.6]
-`
+`;

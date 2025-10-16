@@ -91,7 +91,7 @@ function InnerSelect({
     }
   }
 
-  const selectedLabel = options.find((o) => o.value === value)?.label;
+  const selectedLabel = options?.find((o) => o.value === value)?.label;
   const t = useTranslations();
 
   return (

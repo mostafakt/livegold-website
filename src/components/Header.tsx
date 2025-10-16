@@ -1,17 +1,24 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button, Input } from "./ui";
 import Image from "@/components/ui/Image";
 import { useTranslations } from "next-intl";
 import HeaderSlide from "./ui/HeaderSlide";
 import { FreeMode, Autoplay } from "swiper/modules";
-import { MdOutlineSearch } from "react-icons/md";
 import LocaleButton from "./ui/LocaleButton";
-// Icons for the mobile drawer
+import { Option } from "./ui/Select";
+import SearchableSelect from "./ui/SearchableSelect";
+import { useFetchBlogsQuery } from "@/store/api/blogs";
+import { ManageLocale } from "@/utils/helpers";
+import { useFetchMetalPriceQuery } from "@/store/api/metal-price";
+import { DEFAULT_CURRENCY } from "@/lib/constants";
+import LoadingSwiper from "./header/loading";
+import { IMetalPrice } from "@/types/metal-price";
 const MenuIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     {...props}
@@ -49,21 +56,28 @@ const XIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path d="m6 6 12 12" />
   </svg>
 );
-
+type currencyType = {
+  price: {
+    once: number;
+  };
+  trend: {
+    direction: "up" | "down";
+    change: number;
+  };
+};
 export const pages = [
   { name: "main", href: "/" },
   { name: "blog", href: "/blogs" },
   { name: "about-us", href: "/about-us" },
   { name: "term-and-condition", href: "/term-and-condition" },
   { name: "contact-us", href: "/contact-us" },
-  // { name: "faq", href: "/faq" },
   { name: "privacy-policy", href: "/privacy-policy" },
 ];
-export default function Header() {
+export default function Header({ data }: { data: IMetalPrice | undefined }) {
   const t = useTranslations("");
   const pathname = usePathname();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
+  // const { data, isLoading } = useFetchMetalPriceQuery({});
   return (
     <>
       <header className="bg-bg-gradient text-base-content flex justify-center  px-3 xl:px-16">
@@ -71,37 +85,41 @@ export default function Header() {
 
         <div className="flex flex-col w-full max-w-360 gap-3  mt-2 ">
           {/* Header Slides Section */}
-          <div className="w-full ">
-            <Swiper
-              modules={[FreeMode, Autoplay]}
-              spaceBetween={16}
-              slidesPerView="auto"
-              freeMode={true}
-              grabCursor={true}
-              loop={true}
-              speed={2000}
-              autoplay={{ delay: 2000, disableOnInteraction: false }}
-            >
-              {Array.from({ length: 9 }).map((_, i) => (
-                <SwiperSlide key={i} className=" w-56 max-w-fit ">
-                  {i % 2 === 0 ? (
-                    <HeaderSlide
-                      imageSrc="/images/header/selver.png"
-                      label="فضة"
-                      price={"215"}
-                      isUp
-                    />
-                  ) : (
-                    <HeaderSlide
-                      imageSrc="/images/header/gold.png"
-                      label="ذهب"
-                      price={"215"}
-                    />
-                  )}
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+          {false ? (
+            <LoadingSwiper />
+          ) : (
+            <div className="w-full ">
+              <Swiper
+                modules={[FreeMode, Autoplay]}
+                spaceBetween={16}
+                slidesPerView="auto"
+                freeMode={true}
+                grabCursor={true}
+                loop={true}
+                speed={2000}
+                autoplay={{ delay: 2000, disableOnInteraction: false }}
+              >
+                {data?.data &&
+                  Object.entries(data?.data).map(([key, metal], i) => {
+                    //@ts-ignore
+                    const currency: currencyType = metal[DEFAULT_CURRENCY];
+                    return (
+                      <SwiperSlide key={i} className="  max-w-fit ">
+                        {
+                          <HeaderSlide
+                            imageSrc={`/images/header/${key}.png`}
+                            label={t(key)}
+                            price={`${Number(currency.price.once).toFixed(2)}`}
+                            percentage={`${Number(currency.price.once).toFixed(2)}`}
+                            isUp={currency.trend.direction == "up"}
+                          />
+                        }
+                      </SwiperSlide>
+                    );
+                  })}
+              </Swiper>
+            </div>
+          )}
           {/* Navigation */}
           <nav className="w-full  h-14 flex items-start justify-between  ">
             <div className=" flex items-center gap-4 ">
@@ -150,7 +168,7 @@ export default function Header() {
               </button>
             </div>
             <div className="hidden xl:flex">
-              <HeaderActions primary />
+              <HeaderActions />
             </div>
           </nav>
           <div className="hidden gap-3 w-full sm:w-auto items-center flex-wrap justify-center md:flex-nowrap">
@@ -224,40 +242,110 @@ export default function Header() {
     </>
   );
 }
-const HeaderActions = ({}: { primary?: boolean }) => {
+const HeaderActions = () => {
+  const t = useTranslations();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [input, setInput] = useState("");
+  const [selected, setSelected] = useState<Option | null>(null);
+  const [blogId, setBlogId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const match = pathname.match(/^\/(?:[a-z]{2}\/)?blogs\/([a-zA-Z0-9]+)$/);
+    console.log(pathname);
+
+    if (match) {
+      setBlogId(match[1]);
+    } else {
+      setBlogId(null);
+    }
+  }, [pathname]);
+  const { data, isLoading, isFetching } = useFetchBlogsQuery({
+    filters: { search: input },
+    page: 0,
+    pageSize: 20,
+    sort: "createdAt:desc",
+  });
+
+  const options: Option[] = useMemo(() => {
+    const items = data?.results ?? [];
+    return items.map((b) => ({
+      label: String(ManageLocale.getLocalizedData(b.title)),
+      value: String(b.id),
+      __raw: b,
+    }));
+  }, [data]);
+  useEffect(() => {
+    setSelected(options.find((b) => b.value == blogId) ?? null);
+  }, [options, blogId]);
+
   return (
-    <div className="flex flex-col xl:flex-row gap-1 items-start">
-      <div className=" flex flex-col xl:flex-row gap-3 sm:w-auto items-start xl:items-center flex-wrap justify-center md:flex-nowrap">
-        <Input
-          placeholder="search"
-          className="xl:!min-w-60 !w-full !max-w-96 "
-          icon={<MdOutlineSearch className=" cursor-pointer text-primary" />}
-        />
-        <div className="flex gap-2 justify-between w-full">
-          <div>
+    <div className="w-full flex flex-col xl:flex-row gap-1 items-start">
+      <div className="!w-full flex flex-col xl:flex-row gap-3 sm:w-auto items-start xl:items-center flex-wrap justify-center md:flex-nowrap">
+        <div className="!w-full max-w-full xl:min-w-80">
+          <SearchableSelect
+            options={options}
+            value={selected}
+            onChange={(opt) => {
+              setSelected(opt);
+              if (opt?.value) router.push(`/blogs/${opt.value}`);
+            }}
+            placeholder={!isLoading ? t("search-blogs") : t("loading") + "..."}
+            isSearchable
+            maxResults={8}
+            loading={isLoading || isFetching}
+            //@ts-ignore
+            onInputChange={(val: string) => setInput(val)}
+            renderOption={(opt) => (
+              <div className="flex flex-col">
+                <span className="truncate font-medium text-primary-200">
+                  {opt.label}
+                </span>
+                <span className="text-xs truncate text-neutral-500">
+                  {opt.__raw?.excerpt ?? opt.__raw?.summary ?? ""}
+                </span>
+              </div>
+            )}
+            className="w-full"
+          />
+        </div>
+
+        <div className="flex gap-2 justify-between w-full xl:w-fit">
+          <a
+            href="https://app.livegold.sa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-fit"
+          >
             <Button
               size="md"
               variant="primary"
-              className=" hidden xl:flex flex-grow sm:flex-grow-0"
+              className="hidden xl:flex flex-grow sm:flex-grow-0"
             >
-              {"start-now"}
-            </Button>{" "}
-            <Button
-              size="md"
-              variant="primary"
-              className=" flex xl:hidden flex-grow sm:flex-grow-0"
-            >
-              {"start-now"}
+              {t("start-now")}
             </Button>
-          </div>
-          <div className="block lg:hidden">
+            <Button
+              size="md"
+              variant="primary"
+              className="flex xl:hidden flex-grow sm:flex-grow-0"
+            >
+              {t("start-now")}
+            </Button>
+          </a>
+
+          <div className="block xl:hidden">
             <LocaleButton />
           </div>
         </div>
       </div>
-      <div className="hidden lg:block">
+
+      <div className="hidden xl:block">
         <LocaleButton />
       </div>
+
+      {/* Debug / use blogId if needed */}
+      {/* <p>Current Blog ID: {blogId}</p> */}
     </div>
   );
 };

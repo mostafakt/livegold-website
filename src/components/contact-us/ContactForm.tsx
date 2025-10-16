@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
+import { sendMessage } from "@/services/contact-us";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -29,16 +30,15 @@ export default function ContactForm() {
     setSubmitStatus("idle");
 
     try {
-      // Simulate API call - replace with actual API endpoint
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // TODO: Replace with actual API call
-      console.log("Form data:", data);
-
-      setSubmitStatus("success");
-      reset();
+      await sendMessage(data)
+        .then(() => {
+          setSubmitStatus("success");
+          reset();
+        })
+        .catch(() => {
+          setSubmitStatus("error");
+        });
     } catch (error) {
-      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -101,7 +101,7 @@ export default function ContactForm() {
                 message: "بريد إلكتروني غير صالح",
               },
             })}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 text-secondary-dark focus:ring-primary-500 focus:border-transparent transition-colors ${
               errors.email ? "border-red-500" : "border-neutral-300"
             }`}
             placeholder={translations("form.email")}
@@ -129,7 +129,7 @@ export default function ContactForm() {
                 message: "يجب أن تكون الرسالة至少 10 أحرف",
               },
             })}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
+            className={`w-full px-4 py-3 text-secondary-dark border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
               errors.message ? "border-red-500" : "border-neutral-300"
             }`}
             placeholder={translations("form.message")}

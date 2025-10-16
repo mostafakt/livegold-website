@@ -12,6 +12,7 @@ export type HeaderSlideProps = {
   imageAlt?: string;
 
   className?: string;
+  percentage?: string;
   isUp?: boolean;
 };
 
@@ -19,6 +20,7 @@ export default function HeaderSlide({
   label,
   price,
   imageSrc,
+  percentage,
   imageAlt = "thumb",
   className,
   isUp = false,
@@ -41,16 +43,21 @@ export default function HeaderSlide({
           <div className="flex items-center gap-1">
             {
               <div className="flex items-center ">
-                <div
-                  className={` shrink-0 ${isUp ? "text-green" : "text-red"} text-start  text-sm lg:text-md font-medium leading-normal`}
-                >
-                  7.10
-                </div>{" "}
-                <div
-                  className={` shrink-0 ${isUp ? "text-green" : "text-red"} text-start  text-sm lg:text-md font-medium leading-normal`}
-                >
-                  -
-                </div>
+                {percentage && (
+                  <>
+                    <div
+                      className={` shrink-0 ${isUp ? "text-green" : "text-red"} text-start  text-sm lg:text-md font-medium leading-normal`}
+                    >
+                      {percentage}
+                    </div>
+
+                    <div
+                      className={` shrink-0 ${isUp ? "text-green" : "text-red"} text-start  text-sm lg:text-md font-medium leading-normal`}
+                    >
+                      {!isUp ? "-" : "+"}
+                    </div>
+                  </>
+                )}
                 <Arrow color={isUp ? "fill-green" : "fill-red"} isUp={isUp} />
               </div>
             }
@@ -72,7 +79,7 @@ export default function HeaderSlide({
           height={40}
           src={imageSrc}
           alt={imageAlt}
-          className="w-10 h-10 !max-h-10 object-cover rounded-full"
+          className="!w-10 !h-10 !max-h-10 object-cover rounded-full"
           loading="lazy"
         />
       ) : (

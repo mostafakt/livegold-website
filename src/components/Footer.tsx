@@ -1,21 +1,48 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
-import React from "react";
+import React, { useState } from "react";
 
 import clsx from "clsx";
 import Image from "@/components/ui/Image";
 import { Input } from "./ui";
 import { useTranslations } from "next-intl";
-import { pages } from "./Header";
 
+import { SubscribeToNewsLetter } from "@/services/contact-us";
+import toast from "react-hot-toast";
+import { z as zod } from "zod";
+import Link from "next/link";
 export type FooterProps = {
   logo?: React.ReactNode;
   locale?: string;
   className?: string;
 };
-
+export const pages = [
+  { name: "main", href: "/" },
+  { name: "blog", href: "/blogs" },
+  { name: "about-us", href: "/about-us" },
+  { name: "contact-us", href: "/contact-us" },
+];
 export default function Footer({ logo, className, locale }: FooterProps) {
   const t = useTranslations("");
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const isValidEmail = zod.string().email().safeParse(email).success;
+  const onSubscribe = async () => {
+    setIsSubmitting(true);
 
+    try {
+      await SubscribeToNewsLetter({ email: email })
+        .then(() => {
+          toast.success(t("request-sent"));
+        })
+        .catch((e) => {
+          toast.error(e.message);
+        });
+    } catch {
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <footer
       className={clsx(
@@ -41,10 +68,20 @@ export default function Footer({ logo, className, locale }: FooterProps) {
                 {t("footer.subscribeText")}
               </div>
               <Input
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
                 placeholder="footer.email"
                 isFull
                 component={
-                  <button className="bg-primary rtl:rounded-l-lg max-h-full h-full text-nowrap  ltr:rounded-r-lg px-4 py-2 text-white text-sm font-bold">
+                  <button
+                    disabled={isSubmitting || !isValidEmail}
+                    onClick={() => {
+                      onSubscribe();
+                    }}
+                    className={`${email.length > 0 && (isSubmitting || !isValidEmail) ? " bg-secondary  " : "bg-primary "} rtl:rounded-l-lg max-h-full h-full text-nowrap  ltr:rounded-r-lg px-4 py-2 text-white text-sm font-bold `}
+                  >
                     {t("footer.subscribeNow")}
                   </button>
                 }
@@ -111,9 +148,9 @@ export default function Footer({ logo, className, locale }: FooterProps) {
               <ul className="space-y-3">
                 {pages.map((page) => (
                   <li key={page.name}>
-                    <a href="/" className="hover:text-white">
+                    <Link href={`${page.href}`} className="hover:text-primary">
                       {t(page.name)}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -125,24 +162,22 @@ export default function Footer({ logo, className, locale }: FooterProps) {
               </h3>
               <ul className="space-y-3">
                 <li>
-                  <a href="/faq" className="hover:text-white">
+                  <Link href="/faq" className="hover:text-primary">
                     {t("footer.faq")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/privacy" className="hover:text-white">
+                  <Link href="/privacy-policy" className="hover:text-primary">
                     {t("footer.privacy")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/terms" className="hover:text-white">
+                  <Link
+                    href="/term-and-condition"
+                    className="hover:text-primary"
+                  >
                     {t("footer.terms")}
-                  </a>
-                </li>
-                <li>
-                  <a href="/contact" className="hover:text-white">
-                    {t("footer.contact")}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -172,26 +207,39 @@ export default function Footer({ logo, className, locale }: FooterProps) {
                   />
                 </div>
                 <div className=" hidden md:block">
-                  <div className=" bg-white rounded-lg overflow-hidden">
-                    <Image
-                      src={"/images/footer-logo.png"}
-                      alt="tech-sa"
-                      width={240}
-                      height={80}
-                    />
-                  </div>
+                  <a
+                    href="https://eauthenticate.saudibusiness.gov.sa/certificate-details/0000144107"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {" "}
+                    <div className=" bg-white rounded-lg overflow-hidden">
+                      <Image
+                        src={"/images/footer-logo.png"}
+                        alt="tech-sa"
+                        width={240}
+                        height={80}
+                      />
+                    </div>{" "}
+                  </a>
                 </div>
               </div>
             </div>
             <div className=" block md:hidden">
-              <div className=" bg-white rounded-lg overflow-hidden">
-                <Image
-                  src={"/images/footer-logo.png"}
-                  alt="tech-sa"
-                  width={240}
-                  height={80}
-                />
-              </div>
+              <a
+                href="https://eauthenticate.saudibusiness.gov.sa/certificate-details/0000144107"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <div className=" bg-white rounded-lg overflow-hidden">
+                  <Image
+                    src={"/images/footer-logo.png"}
+                    alt="tech-sa"
+                    width={240}
+                    height={80}
+                  />
+                </div>
+              </a>
             </div>
           </div>
         </div>
@@ -209,7 +257,7 @@ export default function Footer({ logo, className, locale }: FooterProps) {
             <div className="flex items-center gap-4">
               {/* Facebook */}
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/livegold.ksa"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -235,7 +283,7 @@ export default function Footer({ logo, className, locale }: FooterProps) {
 
               {/* Instagram */}
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/livegold.ksa/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"

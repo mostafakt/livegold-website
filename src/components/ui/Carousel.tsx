@@ -113,7 +113,6 @@ export default function EmblaCarousel({
     });
   }, [emblaApi, slidesToShow, direction, align, loop]);
 
-  // update selected on embla select
   //@ts-ignore
   useEffect(() => {
     if (!emblaApi) return;
