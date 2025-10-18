@@ -185,7 +185,7 @@ function FirstSlide({ preFetchedData }: Props) {
                   <Card className="w-full" title={t("price-in-week")}>
                     <div className="flex items-end gap-2">
                       <span className="font-medium text-xl lg:text-2xl flex text-center items-center text-neutral-800">
-                        {`${historyData?.currentPrice ? historyData?.currentPrice.toFixed(2) : "-"}`}
+                        {`${historyData?.change ? historyData?.change.toFixed(2) : "-"}`}
                         <div>
                           {
                             //@ts-ignore
