@@ -110,7 +110,7 @@ export default function Header({ data }: { data: IMetalPrice | undefined }) {
                             imageSrc={`/images/header/${key}.png`}
                             label={t(key)}
                             price={`${Number(currency.price.once).toFixed(2)}`}
-                            percentage={`${Number(currency.price.once).toFixed(2)}`}
+                            percentage={`${Number(currency.trend.change).toFixed(2)}`}
                             isUp={currency.trend.direction == "up"}
                           />
                         }

@@ -15,7 +15,6 @@ import Footer from "@/components/Footer";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { cairo } from "@/styles/fonts";
 import { notFound } from "next/navigation";
-// import { NextIntlClientProvider } from "next-intl";
 import LocalizationWrapper from "@/components/LocalizationWrapper";
 import { ManageLocale } from "@/utils/helpers";
 import { fetchMetalPriceServer } from "@/services/metal-price";

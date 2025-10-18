@@ -111,7 +111,13 @@ export default function PriceAreaChart({
               fontSize: 12,
               fontWeight: 500,
             }}
-            domain={["auto", "dataMax + 100"]}
+            domain={[
+              "auto",
+              (dataMax) => {
+                if (dataMax < 10) return dataMax + dataMax / 25;
+                return dataMax;
+              },
+            ]}
             width={5}
             dx={5}
             className="ltr:block rtl:hidden"
@@ -125,7 +131,13 @@ export default function PriceAreaChart({
               fontSize: 12,
               fontWeight: 500,
             }}
-            domain={["auto", "dataMax + 100"]}
+            domain={[
+              "auto",
+              (dataMax) => {
+                if (dataMax < 10) return dataMax + dataMax / 25;
+                return dataMax;
+              },
+            ]}
             width={20}
             dx={-29}
             className=" rtl:block ltr:!hidden"

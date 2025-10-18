@@ -46,7 +46,7 @@ export default function HeaderSlide({
                 {percentage && (
                   <>
                     <div
-                      className={` shrink-0 ${isUp ? "text-green" : "text-red"} text-start  text-sm lg:text-md font-medium leading-normal`}
+                     dir="ltr" className={` shrink-0 ${isUp ? "text-green" : "text-red"} text-start  text-sm lg:text-md font-medium leading-normal`}
                     >
                       {percentage}
                     </div>
@@ -54,7 +54,7 @@ export default function HeaderSlide({
                     <div
                       className={` shrink-0 ${isUp ? "text-green" : "text-red"} text-start  text-sm lg:text-md font-medium leading-normal`}
                     >
-                      {!isUp ? "-" : "+"}
+                      {!isUp ? "" : "+"}
                     </div>
                   </>
                 )}

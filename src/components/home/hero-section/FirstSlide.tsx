@@ -16,14 +16,6 @@ import PriceChartSkeleton, { PriceStatsSkeleton } from "./FirstSlideLoading";
 import { IHistoryContent, IMetalPriceHistory } from "@/types/metal-price";
 import Image from "@/components/ui/Image";
 
-const periodOptions = [
-  { value: "live", label: "مباشر" },
-  { value: "today", label: "اليوم" },
-  { value: "1m", label: "شهر" },
-  { value: "3m", label: "3 أشهر" },
-  { value: "6m", label: "6 أشهر" },
-  { value: "1y", label: "سنة" },
-];
 export const currencyIcons = {
   USD: "$",
   SAR: (
@@ -38,7 +30,14 @@ type Props = {
 
 function FirstSlide({ preFetchedData }: Props) {
   const t = useTranslations();
-
+  const periodOptions = [
+    { value: "live", label: t("direct") },
+    { value: "today", label: t("today") },
+    { value: "1m", label: t("month") },
+    { value: "3m", label: "3" + " " + t("months") },
+    { value: "6m", label: "6" + " " + t("months") },
+    { value: "1y", label: t("year") },
+  ];
   // filters
   const [period, setPeriod] = useState("1m");
   const [currency, setCurrency] = useState("USD");
@@ -67,7 +66,7 @@ function FirstSlide({ preFetchedData }: Props) {
         from.setFullYear(now.getFullYear() - 1);
         break;
       default:
-        from.setDate(now.getDate() - 7);
+        from.setHours(now.getHours() - 1);
     }
 
     return { dateFrom: from.toISOString(), dateTo: to };
@@ -199,12 +198,7 @@ function FirstSlide({ preFetchedData }: Props) {
                           dir="ltr"
                           className=" flex flex-row   items-center"
                         >
-                          <div>
-                            {
-                              //@ts-ignore
-                              currencyIcons[currency]
-                            }
-                          </div>{" "}
+                          %
                           {`${historyData?.changePercent ? historyData?.changePercent.toFixed(2) : ""}`}
                         </div>
                       </Badge>
